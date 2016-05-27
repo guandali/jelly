@@ -1,3 +1,13 @@
 extends ./layouts/default.jade
 block main
   h2= title
+  
+   form(class='form-signin',name='signup', action='/signup', method='POST')
+    li
+    input(type='text', name="username")
+    li
+    input(type='password', name="user_password_0")
+    li
+    input(type='password', name="user_password_1")
+    li
+    button(type='submit', name='submit_button') Sign Up

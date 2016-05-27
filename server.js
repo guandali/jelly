@@ -8,6 +8,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('config');
+var mysql = require('mysql');
 
 var app = express();
 var port = process.env.PORT || 3000;

@@ -16,6 +16,7 @@ module.exports = function (app, passport) {
   app.get('/', home.index);
   app.get('/login',users.login);
   app.get('/signup',users.signup);
+  app.post('/signup', users.createuser)
 
   /**
    * Error handling

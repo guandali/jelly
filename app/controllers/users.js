@@ -17,3 +17,7 @@ exports.signup = function(req, res){
     });
     
 };
+
+exports.createuser = function (req, res) {
+  console.log('users.ts ::==> createuser')
+}
