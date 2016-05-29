@@ -3,11 +3,16 @@ block main
   h2= title
   
    form(class='form-signin',name='signup', action='/signup', method='POST')
+    
     li
-    input(type='text', name="username")
+    input(type='text', name='name', placeholder='Name', value=user.name, required)
     li
-    input(type='password', name="user_password_0")
+    input(type='text', name='username', placeholder='User Name', value=user.username, required)
     li
-    input(type='password', name="user_password_1")
+    input(type='text', name='email', placeholder='Email', value=user.email, required)
+    li
+    input(type='password', name="user_password_0",pattern=".{6,}",required)
+    li
+    input(type='password', name="user_password_1",pattern=".{6,}",required)
     li
     button(type='submit', name='submit_button') Sign Up
