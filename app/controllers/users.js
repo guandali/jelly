@@ -17,17 +17,22 @@ exports.login = function (req, res) {
 exports.signup = function(req, res){
     console.log('---->signup page');
     res.render('signup',{
-        title: 'create a new account',
-        user: new User()
+        title: 'create a new account'
+        // user: new User()
     });
     
 };
 
 exports.createuser = function (req, res) {
   console.log('users.ts ::==> createuser')
+   console.log('req.body.unhashed_passowrd is'+ JSON.stringify(req.body.unhashed_password))
    const user = new User(req.body)
    user.provider = 'local';
    user.save()
    console.log(JSON.stringify(user))
+   console.log('Try to find this user from db');
+   User.findOne({'_id':user._id},function(err, result_user){
+     console.log(JSON.stringify(result_user))
+   });
   
 }
