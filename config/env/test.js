@@ -4,7 +4,8 @@
  */
 
 module.exports = {
-  db: 'mongodb://localhost/your_project_test',
+ // db: 'mongodb://thebuzzers:cs310project@ds059145.mongolab.com:59145/comicbuzzdb',
+ db: 'mongodb://coliguanda:ac030_Yvr@ds021663.mlab.com:21663/nodeproject1',
   facebook: {
     clientID: 'APP_ID',
     clientSecret: 'SECRET',

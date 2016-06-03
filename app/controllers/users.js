@@ -31,6 +31,7 @@ exports.createuser = function (req, res) {
    user.save()
    console.log(JSON.stringify(user))
    console.log('Try to find this user from db');
+   console.log('Now user._id ::'+ user._id)
    User.findOne({'_id':user._id},function(err, result_user){
      console.log(JSON.stringify(result_user))
    });
