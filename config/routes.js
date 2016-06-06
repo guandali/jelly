@@ -16,7 +16,17 @@ module.exports = function (app, passport) {
   app.get('/', home.index);
   app.get('/login',users.login);
   app.get('/signup',users.signup);
-  app.post('/signup', users.createuser)
+  app.post('/signup', users.createuser);
+  // Post authencicate req to /users/session passport.authenticate
+  
+  app.post('users/sseion', passport.authenticate
+  ('local', {
+    failtureRedirect:'/login',
+    falitureFlash: 'Invalid Message'
+  }), users.session
+  );
+  
+  
 
   /**
    * Error handling

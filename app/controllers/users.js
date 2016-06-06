@@ -7,11 +7,16 @@ var wrap = require('co-express')
 var User = mongoose.model('User')
 
 
-exports.login = function (req, res) {
-  console.log('---->login page');
-  res.render('login', {
-    title: 'Please log in'
-  });
+exports.session = login;
+
+function login (req, res) {
+  console.log('users ----> login');
+//   res.render('login', {
+//     title: 'Please log in'
+//   });
+  //const redirectTo = req.session.returnTo
+  // SOME THING IS UNSET****
+  res.redirect(redirectTo);
 };
 
 exports.signup = function(req, res){
@@ -23,17 +28,23 @@ exports.signup = function(req, res){
     
 };
 
-exports.createuser = function (req, res) {
+exports.createuser = wrap (function* (req, res) {
   console.log('users.ts ::==> createuser')
    console.log('req.body.unhashed_passowrd is'+ JSON.stringify(req.body.unhashed_password))
    const user = new User(req.body)
    user.provider = 'local';
-   user.save()
+   yield user.save()
    console.log(JSON.stringify(user))
    console.log('Try to find this user from db');
    console.log('Now user._id ::'+ user._id)
    User.findOne({'_id':user._id},function(err, result_user){
      console.log(JSON.stringify(result_user))
    });
+   
+       req.logIn(user, err => {
+        if (err)
+            req.flash('info', 'Sorry! We are not able to log you in!');
+        return res.redirect('/');
+    });
   
-}
+});

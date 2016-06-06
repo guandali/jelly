@@ -154,6 +154,13 @@ UserSchema.methods.encryptPassword = function(password){
  */
 
 UserSchema.static({
+    load: function ( options, cb ){
+        options.select = options.select || 'name username';
+        return this.findOne(options.criteria)
+               .select(options.select)
+               .exec(cb);
+        
+    }
 
 });
 

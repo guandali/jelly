@@ -1,5 +1,12 @@
 extends ./layouts/default.jade
 block main
   h2= title
-    l
-    button(type="button", onclick="window.open('/signup', '_blank');") Sign up for new account here 
+    li
+    button(type="button", onclick="window.open('/signup', '_blank');") Sign up for new account here
+    form(class='form-login',name='login', action='/users/session', method='POST')
+    li
+    input(type='text', name='username', placeholder='User Name', value='', required)
+    li
+    input(type='password', name="user_password",pattern=".{6,}",placeholder='Enter your password here',value = '',required)
+    li
+    button(type='submit', name='submit_button') Log in Here
