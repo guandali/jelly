@@ -19,12 +19,14 @@ module.exports = function (app, passport) {
   app.post('/signup', users.createuser);
   // Post authencicate req to /users/session passport.authenticate
   
-  app.post('users/sseion', passport.authenticate
+  app.post('/users/session', passport.authenticate
   ('local', {
-    failtureRedirect:'/login',
-    falitureFlash: 'Invalid Message'
+    
+    failureRedirect:'/login',
+    faliureFlash: 'Invalid Message'
   }), users.session
   );
+  //app.post('/users/session',users.testReq )
   
   
 

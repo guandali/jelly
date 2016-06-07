@@ -23,7 +23,7 @@ var connect = function () {
   
 };
 connect();
-console.log(mongoose.connection);
+//console.log(mongoose.connection);
 
 mongoose.connection.on('error', console.log);
 console.log(connect);

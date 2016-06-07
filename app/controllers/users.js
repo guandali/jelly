@@ -7,17 +7,27 @@ var wrap = require('co-express')
 var User = mongoose.model('User')
 
 
+
+
+exports.login = function (req, res) {
+    res.render('login', { title: 'Login' });
+};
+
+exports.testReq = function(req, res){
+    console.log('users.js :: users.testReq ::'  + JSON.stringify(req.body))
+    res.redirect('/');
+};
+
 exports.session = login;
 
-function login (req, res) {
-  console.log('users ----> login');
-//   res.render('login', {
-//     title: 'Please log in'
-//   });
-  //const redirectTo = req.session.returnTo
-  // SOME THING IS UNSET****
-  res.redirect(redirectTo);
-};
+function login(req, res) {
+    console.log('users.session at users.js');
+    const redirectTo = req.session.returnTo
+        ? req.session.returnTo
+        : '/';
+    delete req.session.returnTo;
+    res.redirect(redirectTo);
+}
 
 exports.signup = function(req, res){
     console.log('---->signup page');
