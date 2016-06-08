@@ -22,11 +22,12 @@ exports.session = login;
 
 function login(req, res) {
     console.log('users.session at users.js');
-    const redirectTo = req.session.returnTo
-        ? req.session.returnTo
-        : '/';
-    delete req.session.returnTo;
-    res.redirect(redirectTo);
+    // const redirectTo = req.session.returnTo
+    //     ? req.session.returnTo
+    //     : '/';
+    // delete req.session.returnTo;
+    console.log('req.body.username  :::: '+ req.body.username)
+    res.redirect('/users/'+ req.body.username);
 }
 
 exports.signup = function(req, res){
@@ -37,6 +38,25 @@ exports.signup = function(req, res){
     });
     
 };
+exports.displayUser = wrap( function* (req, res, next){
+    console.log('@users.displayUser ---> req.profile  :: '+ JSON.stringify(req.profile));
+
+});
+exports.loadUser = wrap (function*(req, res, next, username ){
+    const criteria = {username: username};
+    console.log('username is at users.loadUser :: ' + username);
+    User.findOne(criteria, function(err, result_user){
+        req.profile = result_user
+        if (!req.profile){
+            console.log('!req.profile')
+            return next(new Error('User not found'));
+        }
+        console.log('result_user is at users.loadUser ::'+JSON.stringify(result_user));
+        next();
+        
+
+    });
+});
 
 exports.createuser = wrap (function* (req, res) {
   console.log('users.ts ::==> createuser')
