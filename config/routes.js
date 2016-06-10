@@ -29,6 +29,7 @@ module.exports = function (app, passport) {
   //app.post('/users/session',users.testReq )
   app.param('username', users.loadUser);
   app.get('/users/:username',users.displayUser );
+  app.get('/logout', users.logout);
   
 
   /**

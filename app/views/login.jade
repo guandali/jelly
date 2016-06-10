@@ -3,6 +3,7 @@ block main
   h2= title
     li
     button(type="button", onclick="window.open('/signup', '_blank');") Sign up for new account here
+    br 
    form(class = 'form-horizontal', name='login', action='/users/session', method='POST')
     li
     input(id= 'username',type='text', name='username', placeholder='User Name', value='', required)

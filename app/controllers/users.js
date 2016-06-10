@@ -38,8 +38,18 @@ exports.signup = function(req, res){
     });
     
 };
+// Using passort logout
+exports.logout = wrap ( function* (req, res){
+    console.log('@users.js:: users.logout');
+    req.logout();
+    res.redirect('/');
+
+});
 exports.displayUser = wrap( function* (req, res, next){
-    console.log('@users.displayUser ---> req.profile  :: '+ JSON.stringify(req.profile));
+    //console.log('@users.displayUser ---> req.profile  :: '+ JSON.stringify(req.profile));
+    var user = req.profile;
+    console.log('@users.loadUser :: user.username:::'+ user.username)
+    res.render('userprofile',{user:user});
 
 });
 exports.loadUser = wrap (function*(req, res, next, username ){
