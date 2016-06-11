@@ -9,6 +9,7 @@ var userPlugin = require('mongoose-user');
 //var SALT_WORK_FACTOR = 10;
 var crypto1 = require('crypto');
 var Schema = mongoose.Schema;
+var default_img_URL = 'http://res.cloudinary.com/dlehndc9n/image/upload/c_scale,w_200/v1465669328/default_profile_photo_waetkr.png';
 
 /**
  * User schema
@@ -17,6 +18,7 @@ var Schema = mongoose.Schema;
 const UserSchema = new Schema({
   name: { type: String, default: '' },
   username: {type: String, default:''},
+  user_profile_photo:{type: String, default:default_img_URL},
   email: { type: String, default: '' },
   hashed_password: { type: String, default: '' },
   salt: { type: String, default: '' }

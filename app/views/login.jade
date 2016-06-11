@@ -2,8 +2,7 @@ extends ./layouts/default.jade
 block main
   h2= title
     li
-    button(type="button", onclick="window.open('/signup', '_blank');") Sign up for new account here
-    br 
+    button(type="button", onclick="location.href='/signup'") Sign up for new account here
    form(class = 'form-horizontal', name='login', action='/users/session', method='POST')
     li
     input(id= 'username',type='text', name='username', placeholder='User Name', value='', required)

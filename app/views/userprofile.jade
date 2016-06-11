@@ -3,12 +3,19 @@ extends ./layouts/default.jade
 html 
   include ./navbar.jade
   block main
-    button(type="button", onclick="window.open('/logout', '_blank');") Logout here 
+    button(type="button", onclick="location.href='/logout'") Logout here 
     
+        
     div.welcomebox
     p.
+
       Welcome, #{user.username}
     table
+    tr 
+        td     
+        img(src="#{user.user_profile_photo}")
+       
+            
     tr   
         td Email:  
         td #{user.email}
