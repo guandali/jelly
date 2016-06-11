@@ -12,12 +12,12 @@ html
       Welcome, #{user.username}
     table
     tr 
-        td     
-        img(src="#{user.user_profile_photo}")
+        td
+        a(href='/uploadprofile')     
+          img(src="#{user.user_profile_photo}")
        
             
     tr   
         td Email:  
         td #{user.email}
-  
  

@@ -30,6 +30,8 @@ module.exports = function (app, passport) {
   app.param('username', users.loadUser);
   app.get('/users/:username',users.displayUser );
   app.get('/logout', users.logout);
+  // route to upload user's profile photo
+  app.get('/uploadprofile',users.getUpload);
   
 
   /**

@@ -14,7 +14,7 @@ exports.login = function (req, res) {
 };
 
 exports.testReq = function(req, res){
-    console.log('users.js :: users.testReq ::'  + JSON.stringify(req.body))
+    console.log('users.js :: users.testReq ::'  + JSON.stringify(req.user))
     res.redirect('/');
 };
 
@@ -43,6 +43,18 @@ exports.logout = wrap ( function* (req, res){
     console.log('@users.js:: users.logout');
     req.logout();
     res.redirect('/');
+
+});
+exports.uploadProfilePhoto = wrap( function*(req, res){
+     
+
+
+});
+
+exports.getUpload = wrap( function*(req, res){
+    res.render('uploadprofile',{title: 'Upload new profile photo'});
+     
+
 
 });
 exports.displayUser = wrap( function* (req, res, next){
