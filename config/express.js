@@ -12,13 +12,16 @@ var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var csrf = require('csurf');
-
+var path =  require('path');
+var join = require('path').join;
 var mongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var winston = require('winston');
 var helpers = require('view-helpers');
 var config = require('config');
 var pkg = require('../package.json');
+var multer = require('multer');
+console.log('@express.js  multer    :::'+multer)
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -102,6 +105,7 @@ module.exports = function (app, passport) {
 
   // should be declared after session and flash
   app.use(helpers(pkg.name));
+  app.use(express.static(path.join(__dirname, 'public')));
 
   // adds CSRF support
   // if (process.env.NODE_ENV !== 'test') {

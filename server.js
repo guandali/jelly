@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('config');
 var mysql = require('mysql');
+//var cloudinary = require('cloundinary');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -28,7 +29,7 @@ connect();
 mongoose.connection.on('error', console.log);
 console.log(connect);
 mongoose.connection.on('disconnected', connect);
-
+//console.log('@server.js   __dirname   ::  '+ __dirname);
 // Bootstrap models
 fs.readdirSync(__dirname + '/app/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/app/models/' + file);

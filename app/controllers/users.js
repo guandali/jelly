@@ -5,6 +5,7 @@
 var mongoose = require('mongoose')
 var wrap = require('co-express')
 var User = mongoose.model('User')
+// var cloudinary = require().v2;
 
 
 
@@ -31,6 +32,7 @@ function login(req, res) {
 }
 
 exports.signup = function(req, res){
+    console.log('@users.js :: req.baseUrl for signup   '+ req.baseUrl);
     console.log('---->signup page');
     res.render('signup',{
         title: 'create a new account'
@@ -62,6 +64,18 @@ exports.displayUser = wrap( function* (req, res, next){
     var user = req.profile;
     console.log('@users.loadUser :: user.username:::'+ user.username)
     res.render('userprofile',{user:user});
+
+});
+exports.uploadPhoto = wrap(function *(req, res, next){
+    console.log('@ users.uploadPhoto');
+    
+    console.log('req.file is'+ JSON.stringify(req.files));
+   // console.log('req.files.upload_profile  is   '+ JSON.stringify(req.files.upload_profile));
+    // console.log(JSON.stringify(req.profile_photo));
+    // console.log(JSON.stringify(req.file.profile_photo));
+
+    //console.log('req is::::::::::::');
+    //console.log(req);
 
 });
 exports.loadUser = wrap (function*(req, res, next, username ){

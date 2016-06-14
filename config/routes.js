@@ -6,12 +6,45 @@
 var mongoose = require('mongoose');
 var home = require('home');
 var users = require('users');
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/');
+  },
+  filename : function (req, res, cb) {
+    cb(null, Date.now()+ '.png');
+    
+  }
+});
+var upload = multer({storage: storage});
+console.log('@routes.js      upload is   ::'+ JSON.stringify(upload));
+
+//console.log(path);
+//console.log('@routes.js :: join    :'+ JSON.stringify(join));
+var cloudinary = require('cloudinary');
+cloudinary.config({  
+  cloud_name: 'dlehndc9n', 
+  api_key: '151992173381421', 
+  api_secret: 'f7xc11yowP29Gf8nNOjtiftxAh8' 
+});
+
+//console.log('@routes.js ::: cloundinary :: '+ JSON.stringify(cloudinary))
 
 /**
  * Expose
  */
 
 module.exports = function (app, passport) {
+
+
+  //console.log('WHAT APP IS   ?:'+app);
+  
+
+
+
+  // cloudinary.uploader.upload("", function(result) { 
+  // console.log(result) 
+  // });
 
   app.get('/', home.index);
   app.get('/login',users.login);
@@ -32,6 +65,7 @@ module.exports = function (app, passport) {
   app.get('/logout', users.logout);
   // route to upload user's profile photo
   app.get('/uploadprofile',users.getUpload);
+  app.post('/uploadprofile',upload.any(),users.uploadPhoto);
   
 
   /**

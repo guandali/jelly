@@ -1,2 +1,7 @@
-doctype html
 extends ./layouts/default.jade
+block main
+      form(name='uploadprofile', action='/uploadprofile', method='POST', enctype='multipart/form-data')
+        li
+        input(type='file', name='profile_photo', value= '', required)
+
+        button(type='submit', name='submit_button') Yes, Upload as my profile
