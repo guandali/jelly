@@ -7,7 +7,8 @@ var wrap = require('co-express')
 var User = mongoose.model('User')
 // var cloudinary = require().v2;
 
-
+var cloudinary = require('cloudinary');
+console.log('@users.js   __dirname'+__dirname);
 
 
 exports.login = function (req, res) {
@@ -47,11 +48,11 @@ exports.logout = wrap ( function* (req, res){
     res.redirect('/');
 
 });
-exports.uploadProfilePhoto = wrap( function*(req, res){
+// exports.uploadProfilePhoto = wrap( function*(req, res){
      
 
 
-});
+// });
 
 exports.getUpload = wrap( function*(req, res){
     res.render('uploadprofile',{title: 'Upload new profile photo'});
@@ -69,13 +70,22 @@ exports.displayUser = wrap( function* (req, res, next){
 exports.uploadPhoto = wrap(function *(req, res, next){
     console.log('@ users.uploadPhoto');
     
-    console.log('req.file is'+ JSON.stringify(req.files));
+    console.log('req.files is'+ JSON.stringify(req.file));
    // console.log('req.files.upload_profile  is   '+ JSON.stringify(req.files.upload_profile));
     // console.log(JSON.stringify(req.profile_photo));
     // console.log(JSON.stringify(req.file.profile_photo));
 
     //console.log('req is::::::::::::');
     //console.log(req);
+    var _image = req.file;
+    console.log('_image is :'+JSON.stringify(_image));
+    console.log('_image.path is ::  '+_image.path);
+    console.log('@users.js   __dirname'+__dirname);
+
+     cloudinary.uploader.upload(req.file.path, function(result) { 
+      
+       console.log(result) 
+     });
 
 });
 exports.loadUser = wrap (function*(req, res, next, username ){

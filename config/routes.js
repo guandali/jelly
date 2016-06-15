@@ -65,7 +65,7 @@ module.exports = function (app, passport) {
   app.get('/logout', users.logout);
   // route to upload user's profile photo
   app.get('/uploadprofile',users.getUpload);
-  app.post('/uploadprofile',upload.any(),users.uploadPhoto);
+  app.post('/uploadprofile',upload.single('profile_photo'),users.uploadPhoto);
   
 
   /**
