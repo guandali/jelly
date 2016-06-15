@@ -70,21 +70,54 @@ exports.displayUser = wrap( function* (req, res, next){
 exports.uploadPhoto = wrap(function *(req, res, next){
     console.log('@ users.uploadPhoto');
     
-    console.log('req.files is'+ JSON.stringify(req.file));
+    //console.log('req.files is'+ JSON.stringify(req.file));
    // console.log('req.files.upload_profile  is   '+ JSON.stringify(req.files.upload_profile));
     // console.log(JSON.stringify(req.profile_photo));
     // console.log(JSON.stringify(req.file.profile_photo));
 
     //console.log('req is::::::::::::');
     //console.log(req);
-    var _image = req.file;
-    console.log('_image is :'+JSON.stringify(_image));
-    console.log('_image.path is ::  '+_image.path);
-    console.log('@users.js   __dirname'+__dirname);
+    //var _image = req.file;
+    //console.log('_image is :'+JSON.stringify(_image));
+    //console.log('_image.path is ::  '+_image.path);
+    //console.log('@users.js   __dirname'+__dirname);
 
      cloudinary.uploader.upload(req.file.path, function(result) { 
-      
-       console.log(result) 
+      // var new_profile_URL = JSON.stringify(result.secure_url);
+       var new_profile_URL = result.secure_url;
+       console.log('new_profile_URL    ::'+new_profile_URL);
+
+       console.log('_user_id     :'+req.user._id);
+       User.findByIdAndUpdate(req.user._id, { $set: {user_profile_photo:new_profile_URL}}, function(err, result_user){
+           console.log('---------------');
+           console.log('---------------');
+           console.log('---------------');
+           console.log('AFTER UPDATE::'+result_user.user_profile_photo);
+           return res.redirect('/users/'+result.username);
+
+       });
+    //    User.findOne({_id:req.user._id}, function(err, result){
+    //        console.log('user is    :');
+    //        //console.log(JSON.stringify(result));
+    //        console.log('====================');
+    //        console.log('====================');
+    //        console.log('====================');
+    //        console.log('====================');
+    //        console.log('====================');
+    //     //    console.log('BEF UPDATE:    '+result.user_profile_photo);
+           
+    //     //    console.log('UPDATING');
+    //     //    // Save  after update this doc 
+    //     //    result.save(function(err){
+    //     //        result.user_profile_photo = JSON.stringify(result.secure_url);
+    //     //        if (err) console.log('ERROR! Failed to update thsi doc @users.js uploadPhoto');
+    //     //        console.log('AFT UPDATE:    '+result.user_profile_photo);
+    //     //        //console.log(JSON.stringify('UPDATE success'+JSON.stringify(result)));
+    //     //        return res.redirect('/users/'+result.username);
+    //     //    });
+           
+
+    //    });
      });
 
 });
