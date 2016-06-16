@@ -16,8 +16,7 @@ exports.login = function (req, res) {
 };
 
 exports.testReq = function(req, res){
-    console.log('users.js :: users.testReq ::'  + JSON.stringify(req.user))
-    res.redirect('/');
+    res.render('searchbar');
 };
 
 exports.session = login;
