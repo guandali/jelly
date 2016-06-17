@@ -16,7 +16,15 @@ exports.login = function (req, res) {
 };
 
 exports.testReq = function(req, res){
-    res.render('searchbar');
+    // console.log('req.body.content   is');
+    // console.log(req.body.content);
+    console.log(req.body.query_input);
+    var key_word_for_search = req.body.query_input;
+    User.find({username: new RegExp(key_word_for_search, "i")},function(err, result_user_by_keyword){
+         console.log('@ testReq              result_user_by_keyword    ');
+         console.log(JSON.stringify(result_user_by_keyword));
+    });
+    //res.render('searchbar');
 };
 
 exports.session = login;

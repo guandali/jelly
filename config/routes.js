@@ -67,7 +67,8 @@ module.exports = function (app, passport) {
   app.get('/uploadprofile',users.getUpload);
   app.post('/uploadprofile',upload.single('profile_photo'),users.uploadPhoto);
   //NEXT SECTION IS FOR TESTING
-  app.get('/searchbar', users.testReq);
+  app.get('/searchbar', home.search);
+  app.post('/users/search', users.testReq);
 
   /**
    * Error handling
