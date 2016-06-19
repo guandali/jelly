@@ -23,6 +23,7 @@ exports.testReq = function(req, res){
     User.find({username: new RegExp(key_word_for_search, "i")},function(err, result_user_by_keyword){
          console.log('@ testReq              result_user_by_keyword    ');
          console.log(JSON.stringify(result_user_by_keyword));
+         res.render('searchresults', {results:result_user_by_keyword });
     });
     //res.render('searchbar');
 };
