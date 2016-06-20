@@ -1,6 +1,18 @@
-doctype html
 extends ./layouts/default.jade
-html 
-    if (results == null )
-       lA
-SAS
+block content
+  .main
+    .landing
+       h2= title
+       include searchbar.jade
+        if result !== '' 
+          ul
+            each result in results
+              p
+              ol #{result.username}
+                img(src="#{result.user_profile_photo}", width='30', height='30')
+        else 
+         p 
+         
+
+       
+       

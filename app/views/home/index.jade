@@ -2,11 +2,13 @@ extends ../layouts/default.jade
 
 block main
   h2= title
+  include ../searchbar.jade
   .main 
 block content
-  include ../searchbar.jade
+  
   button(type="button", onclick="window.open('/searchbar', '_blank');") Test Search bar here
   ol
+  l
     img(src="http://res.cloudinary.com/dlehndc9n/image/upload/v1465669328/default_profile_photo_waetkr.png" )
     ol
     button(type="button", onclick="window.open('/login', '_blank');") Lon in here 
