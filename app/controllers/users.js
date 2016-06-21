@@ -25,7 +25,8 @@ exports.testReq = function(req, res){
          console.log(JSON.stringify(result_user_by_keyword));
          var title = 'Display search results';
          console.log('TYPEOF      '+JSON.stringify(typeof(result_user_by_keyword)));
-         if (result_user_by_keyword == '') console.log('NULL')
+         //if (result_user_by_keyword == '') console.log('NULL')
+         if(result_user_by_keyword == null) console.log('NULL')
 
          res.render('searchresults', 
          {    
