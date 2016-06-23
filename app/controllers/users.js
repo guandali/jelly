@@ -8,7 +8,7 @@ var User = mongoose.model('User')
 // var cloudinary = require().v2;
 
 var cloudinary = require('cloudinary');
-console.log('@users.js   __dirname'+__dirname);
+//console.log('@users.js   __dirname'+__dirname);
 
 
 exports.login = function (req, res) {
