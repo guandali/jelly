@@ -1,7 +1,6 @@
 doctype html
-extends ./layouts/default.jade
+include ./bootstrap_lli/navbar.jade
 html 
-  include ./searchbar.jade
   block main
     button(type="button", onclick="location.href='/logout'") Logout here 
     
@@ -14,7 +13,7 @@ html
     tr 
         td
         a(href='/uploadprofile')     
-          img(src="#{user.user_profile_photo}", width='200', height='200')
+          img(src="#{user.user_profile_photo}", width='200', height='200', class= 'thumbnail')
        
             
     tr   
