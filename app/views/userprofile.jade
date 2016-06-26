@@ -1,22 +1,30 @@
 doctype html
-include ./bootstrap_lli/navbar.jade
-html 
-  block main
-    button(type="button", onclick="location.href='/logout'") Logout here 
-    
-        
-    div.welcomebox
-    p.
 
-      Welcome, #{user.username}
-    table
-    tr 
-        td
-        a(href='/uploadprofile')     
-          img(src="#{user.user_profile_photo}", width='200', height='200', class= 'thumbnail')
-       
+html
+  header 
+     include ./bootstrap_lli/navbar.jade
+      
+
+
+   body
+      .container
+         .jumbotron 
+           .ul 
+            button(type="button", onclick="location.href='/logout'") Logout here 
             
-    tr   
-        td Email:  
-        td #{user.email}
+                
+            div.welcomebox
+            p.
+
+              Welcome, #{user.username}
+            table
+            tr 
+                td
+                a(href='/uploadprofile')     
+                  img(src="#{user.user_profile_photo}", width='200', height='200', class= 'thumbnail')
+              
+                    
+            tr   
+                td Email:  
+                td #{user.email}
  
