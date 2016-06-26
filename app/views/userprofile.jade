@@ -3,28 +3,72 @@ doctype html
 html
   header 
      include ./bootstrap_lli/navbar.jade
-      
-
-
-   body
-      .container
-         .jumbotron 
-           .ul 
-            button(type="button", onclick="location.href='/logout'") Logout here 
-            
-                
-            div.welcomebox
-            p.
-
-              Welcome, #{user.username}
-            table
-            tr 
-                td
-                a(href='/uploadprofile')     
-                  img(src="#{user.user_profile_photo}", width='200', height='200', class= 'thumbnail')
-              
-                    
-            tr   
-                td Email:  
-                td #{user.email}
- 
+body 
+    .container
+      .row
+        .col-md-5.toppad.pull-right.col-md-offset-3
+          a(href='edit.html') Edit Profile
+          a(href='edit.html') Logout
+          br
+          p.text-info May 05,2014,03:00 pm 
+        .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
+          .panel.panel-info
+            .panel-heading
+              h3.panel-title #{user.username}
+            .panel-body
+              .row
+                .col-md-3.col-lg-3(align='center')
+                  a(href='/uploadprofile')  
+                    img.img-circle.img-responsive(src="#{user.user_profile_photo}", width='200', height='200', class= 'thumbnail')
+                //
+                  <div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                  <dt>DEPARTMENT:</dt>
+                  <dd>Administrator</dd>
+                  <dt>HIRE DATE</dt>
+                  <dd>11/12/2013</dd>
+                  <dt>DATE OF BIRTH</dt>
+                  <dd>11/12/2013</dd>
+                  <dt>GENDER</dt>
+                  <dd>Male</dd>
+                  </dl>
+                  </div>
+                .col-md-9.col-lg-9
+                  table.table.table-user-information
+                    tbody
+                      tr
+                        td Department:
+                        td Programming
+                      tr
+                        td Hire date:
+                        td 06/23/2013
+                      tr
+                        td Date of Birth
+                        td 01/24/1988
+                      tr
+                      tr
+                        td Gender
+                        td Male
+                      tr
+                        td Home Address
+                        td Metro Manila,Philippines
+                      tr
+                        td Email
+                        td #{user.email}
+                         
+                      td Phone Number
+                      td
+                        | 123-4567-890(Landline)
+                        br
+                        br
+                        | 555-4567-890(Mobile)
+                  a.btn.btn-primary(href='#') My Sales Performance
+                  a.btn.btn-primary(href='#') Team Sales Performance
+            .panel-footer
+              a.btn.btn-sm.btn-primary(data-original-title='Broadcast Message', data-toggle='tooltip', type='button')
+                i.glyphicon.glyphicon-envelope
+              span.pull-right
+                a.btn.btn-sm.btn-warning(href='edit.html', data-original-title='Edit this user', data-toggle='tooltip', type='button')
+                  i.glyphicon.glyphicon-edit
+                a.btn.btn-sm.btn-danger(data-original-title='Remove this user', data-toggle='tooltip', type='button')
+                  i.glyphicon.glyphicon-remove

@@ -32,15 +32,19 @@ block body
 
           if (!req.isAuthenticated())            
               #navbar.navbar-collapse.collapse
-                  .right 
-                      a(href='signup') Sign up here
                   form.navbar-form.navbar-right(name='login', action='/users/session', method='POST')
                       .form-group
-                          input.form-control(id= 'username', name= 'username',type='text', placeholder='Username', value= '', required)
+                            input.form-control(id= 'username', name= 'username',type='text', placeholder='Username', value= '', required)
                       .form-group
-                          input.form-control(id= 'password', type='password', name= 'password', pattern=".{6,}",placeholder='Password')
-                      button.btn.btn-success(type='submit') Sign in
-
+                            input.form-control(id= 'password', type='password', name= 'password', pattern=".{6,}",placeholder='Password')
+                      .btn-group
+                         button.btn.btn-success(type='submit') Sign in
+                         button.btn.btn-success.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                             span.caret
+                             span.sr-only Toggle Dropdown
+                           ul.dropdown-menu
+                             li
+                               a(href='signup') Sign Up
                   
 
           else
