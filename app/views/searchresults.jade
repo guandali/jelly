@@ -1,22 +1,23 @@
-extends ./layouts/default.jade
-block content
-  .main
-    .landing
-       h2= title
-       
-       include searchbar.jade
+doctype html
 
-          ul
-            each result in results
-                p
-                  ol 
-                    img(src="#{result.user_profile_photo}", width='30', height='30')   
-                    #{result.username}
-                                         
+html
+  header 
+     include ./bootstrap_lli/navbar.jade
+    .panel.panel-default
+      
+       .panel-heading Seach results
+       .panel-body
+           .list-group
+               .row
+                 each result in results
+                  .col-md-3.col-lg-3(align='left')
+                   a.list-group-item( href="#" )
+                      h4.list-group-item-heading #{result.username}
+                        img.img-circle.img-responsive(src="#{result.user_profile_photo}", width='45', height='45')
+                        p.list-group-item-text
+                 br 
+              
+        
 
-         
-         
-         
 
-       
-       
+ 
