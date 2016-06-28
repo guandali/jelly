@@ -75,9 +75,26 @@ exports.getUpload = wrap( function*(req, res){
 
 });
 exports.displayUser = wrap( function* (req, res, next){
+    if (!req.isAuthenticated()) {
+      console.log('@displayUser  @users.js ::' +'PLZ LOGIN');
+      res.redirect('/');
+    };
     //console.log('@users.displayUser ---> req.profile  :: '+ JSON.stringify(req.profile));
+
     var user = req.profile;
-    console.log('@users.loadUser :: user.username:::'+ user.username)
+    console.log('@users.loadUser :: user.username:::'+ user.username);
+    //Horizontal Access Control::
+    console.log('user._id is :::'+user._id);
+    console.log('req.user._id  is ::'+req.user._id);
+
+    if (req.user._id.valueOf() !=  user._id.valueOf()){
+        console.log('@displayUser @users.js   '+'NOT SAME USER ');
+        const another_user_profile = [{"email":user.email, "user_profile_photo":user.user_profile_photo}];
+        console.log('another_user_profile @displayUser    ');
+        console.log();
+        console.log();
+        console.log(JSON.stringify(another_user_profile));
+    }
     res.render('userprofile',{user:user});
 
 });
