@@ -1,0 +1,12 @@
+extends ./layouts/default.jade
+block main
+  h2= title
+    li
+    button(type="button", onclick="location.href='/signup'") Sign up for new account here
+   form(class = 'form-horizontal', name='login', action='/users/session', method='POST')
+    li
+    input(id= 'username',type='text', name='username', placeholder='User Name', value='', required)
+    li
+    input(id = 'password',type='password', name="password",pattern=".{6,}",placeholder='Enter your password here',value = '',required)
+    li
+    button(type='submit', name='submit_button') Log in Here
