@@ -126,6 +126,9 @@ UserSchema.static({
                .exec(cb);
         //console.log('load a user is :: ' + JSON.stringify(result_user));
         
+    },
+    addFriend:function(){
+        
     }
 
 });

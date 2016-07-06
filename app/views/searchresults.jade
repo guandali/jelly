@@ -1,10 +1,14 @@
 doctype html
 
+link(href='/css/button.css', rel='stylesheet')
 html
   header 
   .container
      include ./bootstrap_lli/navbar.jade
   .container
+                      a.btn.icon-btn.btn-success(href='#')
+                          span.glyphicon.btn-glyphicon.glyphicon-plus.img-circle.text-success
+                             | Add
     .col-md-5.toppad.pull-right.col-md-offset-3
         .panel.panel-primary
           
@@ -19,6 +23,9 @@ html
                           img.img-circle(src="#{result.user_profile_photo}", width='45', height='45')
                         .col-xs-12.col-sm-9
                           span.name #{result.username}
+                        a.btn.icon-btn.btn-success(href='#')
+                          span.glyphicon.btn-glyphicon.glyphicon-plus.img-circle.text-success
+                             | Add
                           br
                         span.fa.fa-comments.text-muted.c-info(data-toggle='tooltip', title='scott.stevens@example.com')
                           span.visible-xs
