@@ -1,0 +1,722 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Flat UI - Free Bootstrap Framework and Theme
+    meta(name='description', content='Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version.')
+    meta(name='viewport', content='width=1000, initial-scale=1.0, maximum-scale=1.0')
+    // Loading Bootstrap
+    //
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
+    //- link(href='dist/css/vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // Loading Flat UI
+    //- link(href='dist/css/flat-ui.css', rel='stylesheet')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css', rel='stylesheet')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/css/demo.css', rel='stylesheet')
+    link(rel='shortcut icon', href='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/img/favicon.ico')
+    // HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file.
+    //if lt IE 9
+      script(src='dist/js/vendor/html5shiv.js')
+      script(src='dist/js/vendor/respond.min.js')
+  body
+    .container
+      .demo-headline
+        h1.demo-logo
+          .logo
+          |           Flat UI
+          small Free User Interface Kit
+      // /demo-headline
+      h1.demo-section-title Basic elements
+      h3.demo-panel-title Buttons
+      .row.demo-row
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-primary(href='#fakelink') Primary Button
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-warning(href='#fakelink') Warning Button
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-default(href='#fakelink') Default Button
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-danger(href='#fakelink') Danger Button
+      // /row
+      .row.demo-row
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-success(href='#fakelink') Success Button
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-inverse(href='#fakelink') Inverse Button
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-info(href='#fakelink') Info Button
+        .col-xs-3
+          a.btn.btn-block.btn-lg.btn-default.disabled(href='#fakelink') Disabled Button
+      // /row
+      h3.demo-panel-title Input
+      .row
+        .col-xs-3
+          .form-group
+            input.form-control(type='text', value='', placeholder='Inactive')
+        .col-xs-3
+          .form-group.has-error
+            input.form-control(type='text', value='', placeholder='Error')
+        .col-xs-3
+          .form-group.has-success
+            input.form-control(type='text', value='', placeholder='Success')
+            span.input-icon.fui-check-inverted
+        .col-xs-3
+          .form-group
+            input.form-control(type='text', value='Disabled', disabled='disabled')
+      // /row
+      .row
+        .col-xs-3
+          h3.demo-panel-title Dropdown
+          .btn-group
+            button.btn.btn-primary.dropdown-toggle(data-toggle='dropdown', type='button')
+              | Default 
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li
+                a(href='#') Action
+              li
+                a(href='#') Another action
+              li
+                a(href='#') Something else here
+              li.divider
+              li
+                a(href='#') Separated link
+          // /btn-group
+        // /.col-xs-3
+        .col-xs-3
+          h3.demo-panel-title Select
+          select.form-control.select.select-primary(data-toggle='select')
+            option(value='0') Choose hero
+            option(value='1') Spider Man
+            option(value='2') Wolverine
+            option(value='3') Captain America
+            option(value='4', selected='') X-Men
+            option(value='5') Crocodile
+        // /.col-xs-3
+        .col-xs-6
+          h3.demo-panel-title Tags input
+          .tagsinput-primary
+            input.tagsinput(name='tagsinput', data-role='tagsinput', value='School, Teacher, Colleague')
+        // /.col-xs-6
+      // /.row
+      h3.demo-panel-title Navbar
+      .row.demo-row
+        .col-xs-12
+          nav.navbar.navbar-inverse.navbar-embossed(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-01')
+                span.sr-only Toggle navigation
+              a.navbar-brand(href='#') Flat UI
+            #navbar-collapse-01.collapse.navbar-collapse
+              ul.nav.navbar-nav.navbar-left
+                li
+                  a(href='#fakelink')
+                    | Menu Item
+                    span.navbar-unread 1
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Messages 
+                    b.caret
+                  span.dropdown-arrow
+                  ul.dropdown-menu
+                    li
+                      a(href='#') Action
+                    li
+                      a(href='#') Another action
+                    li
+                      a(href='#') Something else here
+                    li.divider
+                    li
+                      a(href='#') Separated link
+                li
+                  a(href='#fakelink') About Us
+              form.navbar-form.navbar-right(action='#', role='search')
+                .form-group
+                  .input-group
+                    input#navbarInput-01.form-control(type='search', placeholder='Search')
+                    span.input-group-btn
+                      button.btn(type='submit')
+                        span.fui-search
+            // /.navbar-collapse
+          // /navbar
+      // /row
+      .row
+        .col-xs-5
+          h3.demo-panel-title Progress bars & Sliders
+          .progress
+            .progress-bar(style='width: 45%;')
+          br
+          .progress
+            .progress-bar(style='width: 40%;')
+            .progress-bar.progress-bar-warning(style='width: 10%;')
+            .progress-bar.progress-bar-danger(style='width: 10%;')
+            .progress-bar.progress-bar-success(style='width: 10%;')
+            .progress-bar.progress-bar-info(style='width: 10%;')
+          br
+          #slider.ui-slider
+            .ui-slider-segment
+            .ui-slider-segment
+            .ui-slider-segment
+        // /sliders
+        .col-xs-6.col-xs-offset-1
+          h3.demo-panel-title Navigation
+          .row.demo-navigation
+            .col-xs-6
+              .btn-toolbar
+                .btn-group
+                  a.btn.btn-primary(href='#fakelink')
+                    span.fui-time
+                  a.btn.btn-primary(href='#fakelink')
+                    span.fui-photo
+                  a.btn.btn-primary.active(href='#fakelink')
+                    span.fui-heart
+                  a.btn.btn-primary(href='#fakelink')
+                    span.fui-eye
+              // /toolbar
+            .col-xs-6.demo-pager
+              ul.pager
+                li.previous
+                  a(href='#fakelink')
+                    span.fui-arrow-left
+                    span All messages
+                li.next
+                  a(href='#fakelink')
+                    span.fui-arrow-right
+              // /pager
+          // /demo-navigation
+          div
+            ul.pagination
+              li.previous
+                a.fui-arrow-left(href='#fakelink')
+              li.active
+                a(href='#fakelink') 1
+              li
+                a(href='#fakelink') 2
+              li
+                a(href='#fakelink') 3
+              li
+                a(href='#fakelink') 4
+              li
+                a(href='#fakelink') 5
+              li
+                a(href='#fakelink') 6
+              li
+                a(href='#fakelink') 7
+              li
+                a(href='#fakelink') 8
+              li.next
+                a.fui-arrow-right(href='#fakelink')
+          // /pagination
+        // /navigation
+      // /row
+      .row
+        .col-xs-3
+          h3.demo-panel-title Checkboxes
+          label.checkbox(for='checkbox1')
+            input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
+            |             Unchecked
+          label.checkbox(for='checkbox2')
+            input#checkbox2(type='checkbox', checked='checked', value='', data-toggle='checkbox')
+            |             Checked
+          label.checkbox(for='checkbox3')
+            input#checkbox3(type='checkbox', value='', data-toggle='checkbox', disabled='')
+            |             Disabled unchecked
+          label.checkbox(for='checkbox4')
+            input#checkbox4(type='checkbox', checked='checked', value='', data-toggle='checkbox', disabled='')
+            |             Disabled checked
+        // /checkboxes col-xs-3
+        .col-xs-3
+          h3.demo-panel-title Radio Buttons
+          label.radio
+            input#optionsRadios1(type='radio', name='optionsRadios', value='option1', data-toggle='radio')
+            |             Radio is off
+          label.radio
+            input#optionsRadios2(type='radio', name='optionsRadios', value='option1', data-toggle='radio', checked='')
+            |             Radio is on
+          label.radio
+            input#optionsRadios3(type='radio', name='optionsRadiosDisabled', value='option2', data-toggle='radio', disabled='')
+            |             Disabled radio is off
+          label.radio
+            input#optionsRadios4(type='radio', name='optionsRadiosDisabled', value='option2', data-toggle='radio', checked='', disabled='')
+            |             Disabled radio is on
+        // /radios col-xs-3
+        .col-xs-3
+          h3.demo-panel-title Switches
+          table(width='100%')
+            tr
+              td.pbm(width='50%')
+                input#custom-switch-01(type='checkbox', checked='', data-toggle='switch')
+              td.pbm
+                input#custom-switch-02(type='checkbox', data-toggle='switch')
+            tr
+              td.pbm
+                .bootstrap-switch-square
+                  input#custom-switch-03(type='checkbox', checked='', data-toggle='switch', data-on-text="<span class='fui-check'></span>", data-off-text="<span class='fui-cross'></span>")
+              td.pbm
+                .bootstrap-switch-square
+                  input#custom-switch-04(type='checkbox', data-toggle='switch')
+            tr
+              td
+                input#custom-switch-5(type='checkbox', checked='', disabled='', data-toggle='switch')
+              td
+                input#custom-switch-6(type='checkbox', checked='', disabled='', data-toggle='switch')
+        // /.col-xs-3
+        .col-xs-3
+          h3.demo-panel-title Share
+          .share.mrl
+            ul
+              li
+                label.share-label(for='share-toggle2') Facebook
+                input(type='checkbox', data-toggle='switch')
+              li
+                label.share-label(for='share-toggle4') Twitter
+                input(type='checkbox', checked='', data-toggle='switch')
+              li
+                label.share-label(for='share-toggle6') Pinterest
+                input(type='checkbox', data-toggle='switch')
+            a.btn.btn-primary.btn-block.btn-large(href='#') Share
+          // /share
+        // /.col-xs-3
+      // /.row
+      .demo-row.typography-row
+        .demo-title
+          h3.demo-panel-title Typography
+        .demo-content
+          .demo-type-example
+            h1
+              span.demo-heading-note Header 1
+              | Showers across the W
+          .demo-type-example
+            h2
+              span.demo-heading-note Header 2
+              | Give this quartet a few
+          .demo-type-example
+            h3
+              span.demo-heading-note Header 3
+              | The Vatican transitions to a
+          .demo-type-example
+            h4
+              span.demo-heading-note Header 4
+              | Great American Bites: Telluride's Oak, The
+          .demo-type-example
+            h5
+              span.demo-heading-note Header 5
+              | Author Diane Alberts loves her some good
+          .demo-type-example
+            h6
+              span.demo-heading-note Header 6
+              | With the success of young-adult book-to-movie
+          .demo-type-example
+            span.demo-text-note Paragraph
+            p
+              | Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+              strong Donec ullamcorper
+              |  nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+          .demo-type-example
+            span.demo-text-note Image
+            img.img-rounded.img-responsive(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/example-image.jpg', alt='example-image')
+            p.img-comment
+              strong Note:
+              |  gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+          .demo-type-example
+            span.demo-text-note Lead Text
+            p.lead
+              | Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+          .demo-type-example
+            span.demo-text-note Quote
+            blockquote
+              p
+                | Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus.
+              small Steve Jobs, CEO Apple
+          .demo-type-example
+            span.demo-text-note Small Font
+            p
+              small
+                | Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+        // /.demo-content-wide
+      // /.demo-row
+      h3.demo-panel-title Color Swatches
+      .row.demo-swatches-row
+        .swatches-col
+          .pallete-item
+            dl.palette.palette-turquoise
+              dt #1abc9c
+              dd Turquoise
+            dl.palette.palette-green-sea
+              dt #16a085
+              dd Green sea
+          .pallete-item
+            dl.palette.palette-emerald
+              dt #2ecc71
+              dd Emerald
+            dl.palette.palette-nephritis
+              dt #27ae60
+              dd Nephritis
+          .pallete-item
+            dl.palette.palette-peter-river
+              dt #3498db
+              dd Peter river
+            dl.palette.palette-belize-hole
+              dt #2980b9
+              dd Belize hole
+          .pallete-item
+            dl.palette.palette-amethyst
+              dt #9b59b6
+              dd Amethyst
+            dl.palette.palette-wisteria
+              dt #8e44ad
+              dd Wisteria
+          .pallete-item
+            dl.palette.palette-wet-asphalt
+              dt #34495e
+              dd Wet asphalt
+            dl.palette.palette-midnight-blue
+              dt #2c3e50
+              dd Midnight blue
+          .pallete-item
+            dl.palette.palette-sun-flower
+              dt #f1c40f
+              dd Sun flower
+            dl.palette.palette-orange
+              dt #f39c12
+              dd Orange
+          .pallete-item
+            dl.palette.palette-carrot
+              dt #e67e22
+              dd Carrot
+            dl.palette.palette-pumpkin
+              dt #d35400
+              dd Pumpkin
+          .pallete-item
+            dl.palette.palette-alizarin
+              dt #e74c3c
+              dd Alizarin
+            dl.palette.palette-pomegranate
+              dt #c0392b
+              dd Pomegranate
+          .pallete-item
+            dl.palette.palette-clouds
+              dt #ecf0f1
+              dd Clouds
+            dl.palette.palette-silver
+              dt #bdc3c7
+              dd Silver
+          .pallete-item
+            dl.palette.palette-concrete
+              dt #95a5a6
+              dd Concrete
+            dl.palette.palette-asbestos
+              dt #7f8c8d
+              dd Asbestos
+        // /swatches items
+        .swatches-desc-col
+          h6.palette-headline SWATCHES
+          p.palette-paragraph
+            | Colors — is almost the most important part of the 
+            strong Flat UI
+            | . Better to use different shades of provided colors than new.
+          p.palette-paragraph
+            | For your convenience we also provide 
+            strong Swatches Preset
+            span (flat‑ui‑swatches.aco in the Pack folder).
+          p.palette-paragraph
+            strong No gradients, no shadows.
+        // /swatches desc
+      // /swatches row
+      h3.demo-panel-title
+        | Icons 
+        small (14)
+      .demo-illustrations
+        .demo-content
+          div
+            img(src='img/icons/svg/toilet-paper.svg', alt='Toilet-Paper')
+          div
+            img(src='img/icons/svg/gift-box.svg', alt='Gift-Box')
+          div
+            img(src='img/icons/svg/pencils.svg', alt='Pensils')
+          div
+            img(src='img/icons/svg/clipboard.svg', alt='Clipboard')
+          div
+            img(src='img/icons/svg/retina.svg', alt='Retina')
+          div
+            img(src='img/icons/svg/compas.svg', alt='Compas')
+          div
+            img(src='img/icons/svg/map.svg', alt='Map')
+          div
+            img(src='img/icons/svg/chat.svg', alt='Chat')
+          div
+            img(src='img/icons/svg/mail.svg', alt='Mail')
+          div
+            img(src='img/icons/svg/book.svg', alt='Book')
+          div
+            img(src='img/icons/svg/calendar.svg', alt='Calendar')
+          div
+            img(src='img/icons/svg/paper-bag.svg', alt='Pocket')
+          div
+            img(src='img/icons/svg/clocks.svg', alt='Watches')
+          div
+            img(src='img/icons/svg/loop.svg', alt='Infinity-Loop')
+      h3.demo-panel-title
+        | Glyphs 
+        small (70)
+      .demo-icons
+        .demo-content
+          span.fui-info-circle
+          span.fui-alert-circle
+          span.fui-question-circle
+          span.fui-check-circle
+          span.fui-cross-circle
+          span.fui-plus-circle
+          span.fui-window
+          span.fui-windows
+          span.fui-upload
+          span.fui-arrow-right
+          span.fui-arrow-left
+          span.fui-loop
+          span.fui-cmd
+          span.fui-mic
+          span.fui-export
+          span.fui-heart
+          span.fui-location
+          span.fui-plus
+          span.fui-check
+          span.fui-cross
+          span.fui-list
+          span.fui-new
+          span.fui-video
+          span.fui-photo
+          span.fui-time
+          span.fui-eye
+          span.fui-chat
+          span.fui-home
+          span.fui-search
+          span.fui-user
+          span.fui-mail
+          span.fui-lock
+          span.fui-power
+          span.fui-star
+          span.fui-calendar
+          span.fui-gear
+          span.fui-bookmark
+          span.fui-exit
+          span.fui-trash
+          span.fui-folder
+          span.fui-bubble
+          span.fui-calendar-solid
+          span.fui-star-2
+          span.fui-credit-card
+          span.fui-clip
+          span.fui-link
+          span.fui-pause
+          span.fui-play
+          span.fui-volume
+          span.fui-mute
+          span.fui-resize
+          span.fui-tag
+          span.fui-document
+          span.fui-image
+          span.fui-triangle-up
+          span.fui-triangle-up-small
+          span.fui-triangle-right-large
+          span.fui-triangle-left-large
+          span.fui-triangle-down
+          span.fui-triangle-down-small
+          span.fui-radio-unchecked
+          span.fui-radio-checked
+          span.fui-checkbox-unchecked
+          span.fui-checkbox-checked
+          span.fui-list-thumbnailed
+          span.fui-list-small-thumbnails
+          span.fui-list-numbered
+          span.fui-list-large-thumbnails
+          span.fui-list-columned
+          span.fui-list-bulleted
+        // /.demo-content
+      // /.demo-icons
+      h3.demo-panel-title
+        | Social 
+        small (27)
+      .demo-icons
+        .demo-content
+          span.fui-facebook
+          span.fui-youtube
+          span.fui-vimeo
+          span.fui-twitter
+          span.fui-stumbleupon
+          span.fui-spotify
+          span.fui-skype
+          span.fui-pinterest
+          span.fui-path
+          span.fui-linkedin
+          span.fui-google-plus
+          span.fui-dribbble
+          span.fui-behance
+          span.fui-yelp
+          span.fui-wordpress
+          span.fui-windows-8
+          span.fui-vine
+          span.fui-tumblr
+          span.fui-paypal
+          span.fui-lastfm
+          span.fui-instagram
+          span.fui-html5
+          span.fui-github
+          span.fui-foursquare
+          span.fui-dropbox
+          span.fui-android
+          span.fui-apple
+        // /.demo-content
+      // /.demo-icons
+      h3.demo-panel-title.mbl.pbl Samples
+      .row.demo-samples
+        .col-xs-4
+          .todo
+            .todo-search
+              input.todo-search-field(type='search', value='', placeholder='Search')
+            ul
+              li.todo-done
+                .todo-icon.fui-user
+                .todo-content
+                  h4.todo-name
+                    | Meet 
+                    strong Adrian
+                    |  at 
+                    strong 6pm
+                  |                   Times Square
+              li
+                .todo-icon.fui-list
+                .todo-content
+                  h4.todo-name
+                    | Chat with 
+                    strong V.Kudinov
+                  |                   Skype conference an 9 am
+              li
+                .todo-icon.fui-eye
+                .todo-content
+                  h4.todo-name
+                    | Watch 
+                    strong Iron Man
+                  |                   1998 Broadway
+              li
+                .todo-icon.fui-time
+                .todo-content
+                  h4.todo-name
+                    | Fix bug on a 
+                    strong Website
+                  |                   As soon as possible
+          // /.todo
+        // /.col-xs-4
+        .col-xs-8
+          video.video-js(preload='auto', poster='docs/assets/img/video/poster.jpg', data-setup='{}')
+            source(src='http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.mp4', type='video/mp4')
+            source(src='http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.webm', type='video/webm')
+        // /video
+      .row.demo-tiles
+        .col-xs-3
+          .tile
+            img.tile-image.big-illustration(src='img/icons/svg/compas.svg', alt='Compas')
+            h3.tile-title Web Oriented
+            p 100% convertable to HTML/CSS layout.
+            a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
+        .col-xs-3
+          .tile
+            img.tile-image(src='img/icons/svg/loop.svg', alt='Infinity-Loop')
+            h3.tile-title Easy to Customize
+            p Vector-based shapes and minimum of layer styles.
+            a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
+        .col-xs-3
+          .tile
+            img.tile-image(src='img/icons/svg/pencils.svg', alt='Pensils')
+            h3.tile-title Color Swatches
+            p Easy to add or change elements. 
+            a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
+        .col-xs-3
+          .tile.tile-hot
+            img.tile-hot-ribbon(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/img/icons/svg/ribbon.svg', alt='ribbon')
+            img.tile-image(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/img/icons/svg/chat.svg', alt='Chat')
+            h3.tile-title Free for Share
+            p Your likes, shares and comments helps us.
+            a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
+      // /tiles
+      .login
+        .login-screen
+          .login-icon
+            img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/img/login/icon.png', alt='Welcome to Mail App')
+            h4
+              | Welcome to 
+              small Mail App
+          .login-form
+            .form-group
+              input#login-name.form-control.login-field(type='text', value='', placeholder='Enter your name')
+              label.login-field-icon.fui-user(for='login-name')
+            .form-group
+              input#login-pass.form-control.login-field(type='password', value='', placeholder='Password')
+              label.login-field-icon.fui-lock(for='login-pass')
+            a.btn.btn-primary.btn-lg.btn-block(href='#') Log in
+            a.login-link(href='#') Lost your password?
+      .row
+        .col-xs-9
+          .demo-browser
+            .demo-browser-side
+              .demo-browser-author
+              .demo-browser-action
+                a.btn.btn-danger.btn-lg.btn-block(href='http://twitter.com/monstercritic', target='_blank')
+                  span.fui-plus
+                  | Follow
+              h5 @monstercritic
+              h6
+                | Tourist. Designer. NYC
+                a(href='http://shmidt.in', target='_blank') shmidt.in
+            .demo-browser-content
+              img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/demo/browser-pic-1.jpg', alt='')
+              img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/demo/browser-pic-2.jpg', alt='')
+              img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/demo/browser-pic-3.jpg', alt='')
+              img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/demo/browser-pic-4.jpg', alt='')
+              img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/demo/browser-pic-5.jpg', alt='')
+              img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/demo/browser-pic-6.jpg', alt='')
+        .col-xs-3
+          .demo-download
+            img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/demo/html-icon.png')
+          a.btn.btn-primary.btn-lg.btn-block(href='https://github.com/designmodo/Flat-UI/archive/master.zip') Download
+          p.demo-download-text Your likes, shares and comments make us happy!
+      // /download area
+    // /container
+    footer
+      .container
+        .row
+          .col-xs-7
+            h3.footer-title Subscribe
+            p
+              | Do you like this freebie? Want to get more stuff like this?
+              br
+              |               Subscribe to designmodo news and updates to stay tuned on great designs.
+              br
+              |               Go to: 
+              a(href='http://designmodo.com/flat-free', target='_blank') designmodo.com/flat-free
+            p.pvl
+              a.twitter-share-button(href='https://twitter.com/share', data-url='http://designmodo.com/flat-free/', data-text='Flat UI Free - PSD&amp;HTML User Interface Kit', data-via='designmodo') Tweet
+              script.
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+              iframe(src='http://ghbtns.com/github-btn.html?user=designmodo&repo=Flat-UI&type=watch&count=true', height='20', width='107', frameborder='0', scrolling='0', style='width:105px; height: 20px;', allowtransparency='true')
+              iframe(src='http://ghbtns.com/github-btn.html?user=designmodo&repo=Flat-UI&type=fork&count=true', height='20', width='107', frameborder='0', scrolling='0', style='width:105px; height: 20px;', allowtransparency='true')
+              iframe(src='http://ghbtns.com/github-btn.html?user=designmodo&type=follow&count=true', height='20', width='195', frameborder='0', scrolling='0', style='width:195px; height: 20px;', allowtransparency='true')
+            a.footer-brand(href='http://designmodo.com', target='_blank')
+              img(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/img/footer/logo.png', alt='Designmodo.com')
+          // /col-xs-7
+          .col-xs-5
+            .footer-banner
+              h3.footer-title Get Flat UI Pro
+              ul
+                li Tons of Basic and Custom UI Elements
+                li A Lot of Useful Samples
+                li More Vector Icons and Glyphs
+                li Pro Color Swatches
+                li Bootstrap Based HTML/CSS/JS Layout
+              |               Go to: 
+              a(href='http://designmodo.com/flat', target='_blank') designmodo.com/flat
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/dist/js/vendor/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/dist/js/vendor/video.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/dist/js/flat-ui.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/docs/assets/js/application.js')
+    script.
+      videojs.options.flash.swf = "dist/js/vendors/video-js.swf"

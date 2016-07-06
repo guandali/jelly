@@ -10,7 +10,15 @@ var userPlugin = require('mongoose-user');
 var crypto1 = require('crypto');
 var Schema = mongoose.Schema;
 var default_img_URL = 'http://res.cloudinary.com/dlehndc9n/image/upload/c_scale,w_200/v1465669328/default_profile_photo_waetkr.png';
-
+/**
+ *  FriendRequestSchema 
+ */
+var FriendRequestSchema = new Schema({
+    userName: String, 
+    requestMessage: String,
+    date: Date 
+    
+});
 /**
  * User schema
  */
@@ -18,6 +26,15 @@ var default_img_URL = 'http://res.cloudinary.com/dlehndc9n/image/upload/c_scale,
 const UserSchema = new Schema({
   name: { type: String, default: '' },
   username: {type: String, default:''},
+  pendingFriendList:[FriendRequestSchema],
+    // Add something more ***** July 4th 2016
+  friendList: [{
+      username: String,
+      date: Date 
+
+
+  }],
+
   user_profile_photo:{type: String, default:default_img_URL},
   email: { type: String, default: '' },
   hashed_password: { type: String, default: '' },
@@ -58,67 +75,7 @@ UserSchema.pre('save', function (next) {
 
 UserSchema.plugin(userPlugin, {});
 
-/**
- * Add your
- * - pre-save hooks
- * - validations
- * - virtuals
- */
 
-/**
- * Methods
- */
-
-// UserSchema.method({
-  
-
-// });
-//  UserSchema.methods.skipValidation = function(){
-//    cb(true);
-  
-//  },
-// UserSchema.methods = {
-  
-//     skipValidation: function () {
-//         return true;
-//     },
-//     authenticate: function (plainText) {
-//         return this.encryptPassword(plainText) === this.hashed_password;
-//     },
-//     /**
-//      * Make salt
-//      *
-//      * @return {String}
-//      * @api public
-//      */
-//     makeSalt: function () {
-//         return Math.round((new Date().valueOf() * Math.random())) + '';
-//     },
-//     /**
-//      * Encrypt password
-//      *
-//      * @param {String} password
-//      * @return {String}
-//      * @api public
-//      */
-//     encryptPassword: function (password) {
-//         if (!password)
-//             return '';
-//         try {
-//             return crypto1
-//                 .createHmac('sha1', this.salt)
-//                 .update(password)
-//                 .digest('hex');
-//         }
-//         catch (err) {
-//             return '';
-//         }
-  
-  
-// },
-// UserSchema.methods.skipValidation = function(){
-//   return true;
-// }
 UserSchema.methods.authenticate= function (plainText) {
          return this.encryptPassword(plainText) === this.hashed_password;
    }
