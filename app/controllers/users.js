@@ -14,6 +14,15 @@ var cloudinary = require('cloudinary');
 exports.login = function (req, res) {
     res.render('login', { title: 'Login' });
 };
+//  This routing is used to test flat-ui
+exports.testui = function (req, res){
+   console.log(' @users.js This routing is used to test flat-ui::');
+   res.render('testuipage');
+};
+exports.testone = function(req, res){
+  console.log(' @testone ');
+  res.render('testone');
+};
 
 exports.testReq = function(req, res){
     // console.log('req.body.content   is');

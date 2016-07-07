@@ -50,6 +50,8 @@ module.exports = function (app, passport) {
   app.get('/login',users.login);
   app.get('/signup',users.signup);
   app.post('/signup', users.createuser);
+  app.get('/test',users.testui);
+  app.get('/test0', users.testone);
   // Post authencicate req to /users/session passport.authenticate
   
   app.post('/users/session', passport.authenticate
