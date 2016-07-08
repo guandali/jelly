@@ -24,6 +24,22 @@ exports.testone = function(req, res){
   res.render('testone');
 };
 
+// req.user add user 
+exports.addfriend =  function(req, res){
+   console.log('@ addfriend  @ users.js');
+   console.log('req.body :::'    + JSON.stringify(req.body));
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('req.user :::'    + JSON.stringify(req.user));
+
+
+};
+// accept as a friend 
+exports.acceptfriend = function(req, res){
+  console.log('@ acceptuser @ users.js  ');
+};
+
 exports.get_search_results = function(req, res){
     // console.log('req.body.content   is');
     // console.log(req.body.content);
@@ -37,7 +53,7 @@ exports.get_search_results = function(req, res){
          //if (result_user_by_keyword == '') console.log('NULL')
          if(result_user_by_keyword == null) console.log('NULL')
          // change to testone
-         res.render('testone', 
+         res.render('searchresults', 
          {    
              title: title,
              results:result_user_by_keyword 
