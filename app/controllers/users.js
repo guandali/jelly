@@ -24,7 +24,7 @@ exports.testone = function(req, res){
   res.render('testone');
 };
 
-exports.testReq = function(req, res){
+exports.get_search_results = function(req, res){
     // console.log('req.body.content   is');
     // console.log(req.body.content);
     console.log(req.body.query_input);
@@ -36,8 +36,8 @@ exports.testReq = function(req, res){
          console.log('TYPEOF      '+JSON.stringify(typeof(result_user_by_keyword)));
          //if (result_user_by_keyword == '') console.log('NULL')
          if(result_user_by_keyword == null) console.log('NULL')
-
-         res.render('searchresults', 
+         // change to testone
+         res.render('testone', 
          {    
              title: title,
              results:result_user_by_keyword 

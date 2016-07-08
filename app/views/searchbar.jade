@@ -6,7 +6,7 @@ html
     // Latest compiled and minified JavaScript
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
 section.searchbox
-  form.navbar-form.navbar-left(name="searchForm", action='/users/search', method='POST')
+  form.navbar-form.navbar-left(name="searchForm", action='/searchresults', method='POST')
    .form-group
     input.form-control(name="query_input",
       placeholder="Search terms...",

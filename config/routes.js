@@ -70,7 +70,7 @@ module.exports = function (app, passport) {
   app.post('/uploadprofile',upload.single('profile_photo'),users.uploadPhoto);
   //NEXT SECTION IS FOR TESTING
   app.get('/searchbar', home.search);
-  app.post('/users/search', users.testReq);
+  app.post('/searchresults', users.get_search_results);
 
   /**
    * Error handling
