@@ -25,19 +25,36 @@ exports.testone = function(req, res){
 };
 
 // req.user add user 
-exports.addfriend =  function(req, res){
-   console.log('@ addfriend  @ users.js');
-   console.log('req.body :::'    + JSON.stringify(req.body));
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('req.user :::'    + JSON.stringify(req.user));
+exports.addfriend = wrap (function* (req, res, next, user_1_info){
+
+     console.log('@ addfriend  @ users.js');
+     console.log('user_1_info' + user_1_info);
+     console.log('req  ::');
+     console.log('req  ::');
+     console.log('req.parmas  ::');
+     console.log(JSON.stringify(req.params));
+
+});
+// exports.addfriend =  function(req, res, next, user_1_name){
+
+//    console.log('@ addfriend  @ users.js');
+//    console.log('user_1_name' + JSON.stringify(user_1_name) );
+//    console.log('req.body :::'    + JSON.stringify(req.body));
+//    console.log('++++++++++++++++++++++++++');
+//    console.log('++++++++++++++++++++++++++');
+//    console.log('++++++++++++++++++++++++++');
+//    console.log('req.user :::'    + JSON.stringify(req.user));
+//    // addfriend(user_0_name, user_1_name) user_0 is whoever make request, user_1 is who are going to accept request 
+//    var user_0_name = req.user.username;
+// //    var user_1_name = 
+// //    User.addfriend();
 
 
-};
+// };
 // accept as a friend 
 exports.acceptfriend = function(req, res){
   console.log('@ acceptuser @ users.js  ');
+
 };
 
 exports.get_search_results = function(req, res){
@@ -156,6 +173,22 @@ exports.loadUser = wrap (function*(req, res, next, username ){
 
     });
 });
+
+// exports.loadUser = wrap (function*(req, res, next, username ){
+//     const criteria = {username: username};
+//     console.log('username is at users.loadUser :: ' + username);
+//     User.findOne(criteria, function(err, result_user){
+//         req.profile = result_user
+//         if (!req.profile){
+//             console.log('!req.profile')
+//             return next(new Error('User not found'));
+//         }
+//         console.log('result_user is at users.loadUser ::'+JSON.stringify(result_user));
+//         next();
+        
+
+//     });
+// });
 
 exports.createuser = wrap (function* (req, res) {
   console.log('users.ts ::==> createuser')

@@ -15,7 +15,7 @@ var default_img_URL = 'http://res.cloudinary.com/dlehndc9n/image/upload/c_scale,
  */
 var FriendRequestSchema = new Schema({
     userName: String, 
-    requestMessage: String,
+    requestMessage: {type:String, default: ''},
     date: Date 
     
 });

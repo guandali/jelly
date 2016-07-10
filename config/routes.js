@@ -71,7 +71,8 @@ module.exports = function (app, passport) {
   //NEXT SECTION IS FOR TESTING
   app.get('/searchbar', home.search);
   app.post('/searchresults', users.get_search_results);
-  app.get('/users/addfriend/:username',users.addfriend );
+  //app.param('user_id', users.loadUser);
+  app.post('/addfriend/:username',users.addfriend );
 
   /**
    * Error handling
