@@ -27,7 +27,7 @@ html(lang='en')
                    img.tile-image.big-illustration(src="#{result.user_profile_photo}", width='45', height='45', alt='Compas')
                   h3.tile-title #{result.username}
                   ul 
-                  form(method='post', action= '/addfriend/' + result.username, role='form')
+                  form(method='post', action= '/users/'+req.user.username+'/addfriend/' + result.username, role='form')
                    button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
             //- .col-xs-3
             //-   .tile

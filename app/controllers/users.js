@@ -25,32 +25,32 @@ exports.testone = function(req, res){
 };
 
 // req.user add user 
-exports.addfriend = wrap (function* (req, res, next, user_1_info){
+// exports.addfriend = wrap (function* (req, res, next, user_1_info){
 
-     console.log('@ addfriend  @ users.js');
-     console.log('user_1_info' + user_1_info);
-     console.log('req  ::');
-     console.log('req  ::');
-     console.log('req.parmas  ::');
-     console.log(JSON.stringify(req.params));
+//      console.log('@ addfriend  @ users.js');
+//      console.log('user_1_info' + user_1_info);
+//      console.log('req  ::');
+//      console.log('req  ::');
+//      console.log('req.parmas  ::');
+//      console.log(JSON.stringify(req.params));
 
-});
-// exports.addfriend =  function(req, res, next, user_1_name){
+// });
+exports.addfriend =  function(req, res){
 
-//    console.log('@ addfriend  @ users.js');
-//    console.log('user_1_name' + JSON.stringify(user_1_name) );
-//    console.log('req.body :::'    + JSON.stringify(req.body));
-//    console.log('++++++++++++++++++++++++++');
-//    console.log('++++++++++++++++++++++++++');
-//    console.log('++++++++++++++++++++++++++');
-//    console.log('req.user :::'    + JSON.stringify(req.user));
-//    // addfriend(user_0_name, user_1_name) user_0 is whoever make request, user_1 is who are going to accept request 
-//    var user_0_name = req.user.username;
-// //    var user_1_name = 
-// //    User.addfriend();
+   console.log('@ addfriend  @ users.js');
+   //console.log('user_1_name' + JSON.stringify(user_1_name) );
+   console.log('req.body :::'    + JSON.stringify(req.params));
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('req.user :::'    + JSON.stringify(req.user));
+   // addfriend(user_0_name, user_1_name) user_0 is whoever make request, user_1 is who are going to accept request 
+   var user_0_name = req.user.username;
+//    var user_1_name = 
+//    User.addfriend();
 
 
-// };
+};
 // accept as a friend 
 exports.acceptfriend = function(req, res){
   console.log('@ acceptuser @ users.js  ');

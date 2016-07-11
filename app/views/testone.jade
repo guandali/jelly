@@ -1,3 +1,4 @@
+    
 doctype html
 html(lang='en')
   head
@@ -16,35 +17,89 @@ html(lang='en')
       script(src='dist/js/vendor/html5shiv.js')
       script(src='dist/js/vendor/respond.min.js')
    body 
-    section#results
-     .container
-      .col.demo-tiles
-         .center
-           each result in results
-            .col-xs-3
-               .tile
-                a( href="/users/"+result.username )
-                 img.tile-image.big-illustration(src="#{result.user_profile_photo}", width='45', height='45', alt='Compas')
-                 h3.tile-title #{result.username}
-                 a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Add Friend Here
-            //- .col-xs-3
-            //-   .tile
-            //-     img.tile-image(src='Flat-UI/img/icons/svg/loop.svg', alt='Infinity-Loop')
-            //-     h3.tile-title Easy to Customize
-            //-     p Vector-based shapes and minimum of layer styles.
-            //-     a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
-            //- .col-xs-3
-            //-   .tile
-            //-     img.tile-image(src='Flat-UI/img/icons/svg/pencils.svg', alt='Pensils')
-            //-     h3.tile-title Color Swatches
-            //-     p Easy to add or change elements. 
-            //-     a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
-            //- .col-xs-3
-            //-   .tile.tile-hot
-            //-     img.tile-hot-ribbon(src='Flat-UI/img/icons/svg/ribbon.svg', alt='ribbon')
-            //-     img.tile-image(src='Flat-UI/img/icons/svg/chat.svg', alt='Chat')
-            //-     h3.tile-title Free for Share
-            //-     p Your likes, shares and comments helps us.
-            //-     a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
+    .row
+       .col-md-12
+         nav.navbar.navbar-inverse(role='navigation')
+           .navbar-header
+             button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse-01')
+               span.sr-only Toggle navigation
+               span.icon-bar
+               span.icon-bar
+               span.icon-bar
+           .collapse.navbar-collapse.navbar-collapse-01
+             ul.nav.navbar-nav.navbar-left
+               li.active
+                 a(href='/') Home
+               li
+                   #bs-example-navbar-collapse-2.collapse.navbar-collapse
+                       form.navbar-form.navbar-left(role='search',name="searchForm", action='/searchresults', method='POST')
+                         .form-group
+                           input.form-control(name="query_input",
+                           placeholder="Search terms...",
+                           type="search",
+                           results="3",
+                           autosave="byways-search",
+                           required)
+                         button.btn.btn-default(type='submit') Submit
+               li.dropdown
+                 a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
+                   | Club/Plan Setup
+                   span.caret
+                 ul.dropdown-menu
+                   li
+                     a(href='#fakelink') Configure Clubs
+                   li
+                     a(href='#fakelink') Configure Feature Plans
+                 // /Sub menu
+               li.dropdown
+                 a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
+                   | Promo Setup
+                   span.caret
+                 ul.dropdown-menu
+                   li
+                     a(href='#fakelink') View Promo List
+                   li
+                     a(href='#fakelink') Add Edit Promo
+                   li
+                     a(href='#fakelink') Promo Details
+             ul
+               if (req.isAuthenticated())
+                li.dropdown  
+                 #bs-example-navbar-collapse-17.collapse.navbar-collapse
+                  p.navbar-text.navbar-right
+                    | Signed in as
+                    a.navbar-link(href= '/users/'+ req.user.username)
+                      strong  #{req.user.username}
+                      span.caret
+                ul.dropdown-menu
+                  li
+                   a(href='#fakelink') View Promo List
+
+                 // /Sub menu
+    .row
+       .col-xs-12
+         nav.navbar.navbar(role='navigation')
+               if (!req.isAuthenticated())
+                  #navbar.navbar-collapse.navbar-right.collapse
+                    form.navbar-form.navbar-right(name='login', action='/users/session', method='POST')
+                      .form-group
+                            input.form-control(id= 'username', name= 'username',type='text', placeholder='Username', value= '', required)
+                      .form-group
+                            input.form-control(id= 'password', type='password', name= 'password', pattern=".{6,}",placeholder='Password')
+                      .btn-group
+                         button.btn.btn-success(type='submit') Sign in
+                         button.btn.btn-success.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                             span.caret
+                             span.sr-only Toggle Dropdown
+                           ul.dropdown-menu
+                             li
+                               a(href='signup') Sign Up
 
 
+
+         
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='Flat-UI/dist/js/vendor/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='Flat-UI/dist/js/flat-ui.min.js')
+    script(src='Flat-UI/assets/js/application.js')

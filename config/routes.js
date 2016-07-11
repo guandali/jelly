@@ -63,7 +63,14 @@ module.exports = function (app, passport) {
   );
   //app.post('/users/session',users.testReq )
   app.param('username', users.loadUser);
+  app.param('username_0',function(req, res, next, id){
+    next();
+  });
+  app.param('username_1',function(req, res, next, id){
+    next();
+  });
   app.get('/users/:username',users.displayUser );
+  app.post('/users/:username_0/addfriend/:username_1', users.addfriend);
   app.get('/logout', users.logout);
   // route to upload user's profile photo
   app.get('/uploadprofile',users.getUpload);
@@ -72,7 +79,9 @@ module.exports = function (app, passport) {
   app.get('/searchbar', home.search);
   app.post('/searchresults', users.get_search_results);
   //app.param('user_id', users.loadUser);
-  app.post('/addfriend/:username',users.addfriend );
+  //app.post('/addfriend/:username',users.addfriend );
+  //action= '/users/'+req.user.username+'/addfriend/' + result.username
+
 
   /**
    * Error handling
