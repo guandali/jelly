@@ -48,6 +48,12 @@ exports.addfriend =  function(req, res){
    var user_0_name = req.user.username;
 //    var user_1_name = 
 //    User.addfriend();
+   req.user.pendingFriendList.push({userName: req.params.username_1});
+   req.user.save();
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('req.user :::'    + JSON.stringify(req.user));
 
 
 };
@@ -66,13 +72,23 @@ exports.get_search_results = function(req, res){
          console.log('@ testReq              result_user_by_keyword    ');
          console.log(JSON.stringify(result_user_by_keyword));
          var title = 'Display search results';
-         console.log('TYPEOF      '+JSON.stringify(typeof(result_user_by_keyword)));
+         //console.log('TYPEOF      '+JSON.stringify(typeof(result_user_by_keyword)));
          //if (result_user_by_keyword == '') console.log('NULL')
          if(result_user_by_keyword == null) console.log('NULL')
          // change to testone
+         var names = [];
+         var arrayLength = req.user.pendingFriendList.length;
+         console.log('Before for loop');
+         console.log('arrayLength'+ arrayLength);
+         for (var i = 0; i < arrayLength; i ++ )
+         {
+           names.push(req.user.pendingFriendList[i].userName);
+           console.log(names[i]);
+        }
          res.render('searchresults', 
          {    
              title: title,
+             names: names,
              results:result_user_by_keyword 
 
          }
