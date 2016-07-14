@@ -57,12 +57,13 @@ exports.addfriend =  function(req, res){
 
 
 };
-// accept as a friend 
-exports.acceptfriend = function(req, res){
-  console.log('@ acceptuser @ users.js  ');
+// // accept as a friend 
+// exports.acceptfriend = function(req, res){
+//   console.log('@ acceptuser @ users.js  ');
 
-};
-
+// };
+// How I hdndled pending user 
+// Created another array can 
 exports.get_search_results = function(req, res){
     // console.log('req.body.content   is');
     // console.log(req.body.content);
@@ -75,20 +76,10 @@ exports.get_search_results = function(req, res){
          //console.log('TYPEOF      '+JSON.stringify(typeof(result_user_by_keyword)));
          //if (result_user_by_keyword == '') console.log('NULL')
          if(result_user_by_keyword == null) console.log('NULL')
-         // change to testone
-         var names = [];
-         var arrayLength = req.user.pendingFriendList.length;
-         console.log('Before for loop');
-         console.log('arrayLength'+ arrayLength);
-         for (var i = 0; i < arrayLength; i ++ )
-         {
-           names.push(req.user.pendingFriendList[i].userName);
-           console.log(names[i]);
-        }
          res.render('searchresults', 
          {    
              title: title,
-             names: names,
+             //names: names,
              results:result_user_by_keyword 
 
          }

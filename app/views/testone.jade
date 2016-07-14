@@ -68,13 +68,35 @@ html(lang='en')
                    p.navbar-text.navbar-right
                      | Signed in as 
                      a.navbar-link(href='/users/'+ req.user.username) #{req.user.username}
-             //-   if (req.isAuthenticated())
-             //-    li.dropdown  
-             //-     #bs-example-navbar-collapse-17.collapse.navbar-collapse
-             //-      p.navbar-text.navbar-right
-             //-        | Signed in as
-             //-        a.navbar-link(href= '/users/'+ req.user.username)
-             //-          strong  #{req.user.username}
+ 
+               li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                  i.fa.fa-fw.fa-bell-o
+                  |  Message
+                  span.badge 0
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#')
+                      i.fa.fa-fw.fa-tag
+                      span.badge Music
+                      |  sayfası 
+                      span.badge Video
+                      |  sayfasında etiketlendi
+                  li
+                    a(href='#')
+                      i.fa.fa-fw.fa-thumbs-o-up
+                      span.badge Music
+                      |  sayfasında iletiniz beğenildi
+                  li
+                    a(href='#')
+                      i.fa.fa-fw.fa-thumbs-o-up
+                      span.badge Video
+                      |  sayfasında iletiniz beğenildi
+                  li
+                    a(href='#')
+                      i.fa.fa-fw.fa-thumbs-o-up
+                      span.badge Game
+                      |  sayfasında iletiniz beğenildi
 
                 
     .row

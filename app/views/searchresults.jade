@@ -20,7 +20,15 @@ html(lang='en')
         
      
      
-   body 
+   body
+
+         - var names = [];
+         - var arrayLength = req.user.pendingFriendList.length;
+         -  for (var i = 0; i < arrayLength; i ++ )
+              -  names.push(req.user.pendingFriendList[i].userName);
+              - console.log(names[i]);
+
+       
     section#results
      .container
       .col.demo-tiles
@@ -33,27 +41,10 @@ html(lang='en')
                   h3.tile-title #{result.username}
                     if (names.indexOf(result.username) != -1 )
                       ul
-                      button#button1.btn.btn-warning(type='button') Pending
+                      button#button1.btn.btn-warning.btn-large.btn-block(type='button') Pending
                     
                     else
                       ul 
                       form(method='post', action= '/users/'+req.user.username+'/addfriend/' + result.username, role='form')
                         button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
-            //-   .tile
-            //-     img.tile-image(src='Flat-UI/img/icons/svg/loop.svg', alt='Infinity-Loop')
-            //-     h3.tile-title Easy to Customize
-            //-     p Vector-based shapes and minimum of layer styles.
-            //-     a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
-            //- .col-xs-3
-            //-   .tile
-            //-     img.tile-image(src='Flat-UI/img/icons/svg/pencils.svg', alt='Pensils')
-            //-     h3.tile-title Color Swatches
-            //-     p Easy to add or change elements. 
-            //-     a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
-            //- .col-xs-3
-            //-   .tile.tile-hot
-            //-     img.tile-hot-ribbon(src='Flat-UI/img/icons/svg/ribbon.svg', alt='ribbon')
-            //-     img.tile-image(src='Flat-UI/img/icons/svg/chat.svg', alt='Chat')
-            //-     h3.tile-title Free for Share
-            //-     p Your likes, shares and comments helps us.
-            //-     a.btn.btn-primary.btn-large.btn-block(href='http://designmodo.com/flat') Get Pro
+          
