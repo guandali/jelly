@@ -42,34 +42,6 @@ html(lang='en')
                            required)
                          button.btn.btn-default(type='submit') Submit
                li.dropdown
-                 a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
-                   | Club/Plan Setup
-                   span.caret
-                 ul.dropdown-menu
-                   li
-                     a(href='#fakelink') Configure Clubs
-                   li
-                     a(href='#fakelink') Configure Feature Plans
-                 // /Sub menu
-               li.dropdown
-                 a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
-                   | Promo Setup
-                   span.caret
-                 ul.dropdown-menu
-                   li
-                     a(href='#fakelink') View Promo List
-                   li
-                     a(href='#fakelink') Add Edit Promo
-                   li
-                     a(href='#fakelink') Promo Details
-               li
-                if (req.isAuthenticated())
-                 #bs-example-navbar-collapse-17.collapse.navbar-collapse
-                   p.navbar-text.navbar-right
-                     | Signed in as 
-                     a.navbar-link(href='/users/'+ req.user.username) #{req.user.username}
- 
-               li.dropdown
                 a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
                   i.fa.fa-fw.fa-bell-o
                   |  Message
@@ -78,7 +50,7 @@ html(lang='en')
                   li
                     a(href='#')
                       i.fa.fa-fw.fa-tag
-                      span.badge Music
+                      span.badge Friend Requests
                       |  sayfası 
                       span.badge Video
                       |  sayfasında etiketlendi
@@ -97,6 +69,26 @@ html(lang='en')
                       i.fa.fa-fw.fa-thumbs-o-up
                       span.badge Game
                       |  sayfasında iletiniz beğenildi
+                 // /Sub menu
+               li.dropdown
+                 a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
+                   | Promo Setup
+                   span.caret
+                 ul.dropdown-menu
+                   li
+                     a(href='#fakelink') View Promo List
+                   li
+                     a(href='#fakelink') Add Edit Promo
+                   li
+                     a(href='#fakelink') Promo Details
+               li
+                if (req.isAuthenticated())
+                 #bs-example-navbar-collapse-17.collapse.navbar-collapse
+                   p.navbar-text.navbar-right
+                     | Signed in as 
+                     a.navbar-link(href='/users/'+ req.user.username) #{req.user.username}
+
+
 
                 
     .row
@@ -117,6 +109,7 @@ html(lang='en')
                            ul.dropdown-menu
                              li
                                a(href='signup') Sign Up
+
 
 
 
