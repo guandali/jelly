@@ -22,30 +22,44 @@ html(lang='en')
      
    body
 
-         - var names = [];
-         - var arrayLength = req.user.pendingFriendList.length;
-         -  for (var i = 0; i < arrayLength; i ++ )
-              -  names.push(req.user.pendingFriendList[i].userName);
-              - console.log(names[i]);
+        
 
-       
-    section#results
-     .container
-      .col.demo-tiles
-         .center
-          each result in results
-           if (result.username !== req.user.username)
-            .col-xs-3
-               .tile
-                  a( href="/users/"+result.username )
-                   img.tile-image.big-illustration(src="#{result.user_profile_photo}", width='45', height='45', alt='Compas')
-                  h3.tile-title #{result.username}
-                    if (names.indexOf(result.username) != -1 )
-                      ul
-                      button#button1.btn.btn-warning.btn-large.btn-block(type='button') Pending
-                    
-                    else
-                      ul 
-                      form(method='post', action= '/users/'+req.user.username+'/addfriend/' + result.username, role='form')
-                        button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
-          
+     if (!req.isAuthenticated)
+          - var names = [];
+          - var arrayLength = req.user.pendingFriendList.length;
+          -  for (var i = 0; i < arrayLength; i ++ )
+                -  names.push(req.user.pendingFriendList[i].userName);
+                - console.log(names[i]);
+                section#results
+                .container
+                  .col.demo-tiles
+                    .center
+                      each result in results
+                       if ((result.username !== req.user.username))
+                        .col-xs-3
+                          .tile
+                              a( href="/users/"+result.username )
+                              img.tile-image.big-illustration(src="#{result.user_profile_photo}", width='45', height='45', alt='Compas')
+                              h3.tile-title #{result.username}
+                                if (names.indexOf(result.username) != -1 )
+                                  ul
+                                  button#button1.btn.btn-warning.btn-large.btn-block(type='button') Pending
+                                
+                                else
+                                  ul 
+                                  form(method='post', action= '/users/'+req.user.username+'/addfriend/' + result.username, role='form')
+                                    button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
+     else 
+        section#results
+          .container
+            .col.demo-tiles
+              .center
+                each result in results
+                  .col-xs-3
+                    .tile
+                        a( href="/users/"+result.username )
+                        img.tile-image.big-illustration(src="#{result.user_profile_photo}", width='45', height='45', alt='Compas')
+                        h3.tile-title #{result.username}
+                            ul 
+                            form(method='post', action= '', role='form')
+                              button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
