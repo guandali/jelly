@@ -47,28 +47,29 @@ html(lang='en')
                   |  Message
                   span.badge 0
                 ul.dropdown-menu(role='menu')
+                 each req_msg in req.user.awaitingFridendList
                   li
                     a(href='#')
                       i.fa.fa-fw.fa-tag
-                      span.badge Friend Requests
-                      |  sayfası 
-                      span.badge Video
-                      |  sayfasında etiketlendi
-                  li
-                    a(href='#')
-                      i.fa.fa-fw.fa-thumbs-o-up
-                      span.badge Music
-                      |  sayfasında iletiniz beğenildi
-                  li
-                    a(href='#')
-                      i.fa.fa-fw.fa-thumbs-o-up
-                      span.badge Video
-                      |  sayfasında iletiniz beğenildi
-                  li
-                    a(href='#')
-                      i.fa.fa-fw.fa-thumbs-o-up
-                      span.badge Game
-                      |  sayfasında iletiniz beğenildi
+                      span.badge #{req_msg.userName}
+                      |  wants to add you as friend
+                      //- span.badge Video
+                      //- |  sayfasında etiketlendi
+                  //- li
+                  //-   a(href='#')
+                  //-     i.fa.fa-fw.fa-thumbs-o-up
+                  //-     span.badge Music
+                  //-     |  sayfasında iletiniz beğenildi
+                  //- li
+                  //-   a(href='#')
+                  //-     i.fa.fa-fw.fa-thumbs-o-up
+                  //-     span.badge Video
+                  //-     |  sayfasında iletiniz beğenildi
+                  //- li
+                  //-   a(href='#')
+                  //-     i.fa.fa-fw.fa-thumbs-o-up
+                  //-     span.badge Game
+                  //-     |  sayfasında iletiniz beğenildi
                  // /Sub menu
                li.dropdown
                  a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')

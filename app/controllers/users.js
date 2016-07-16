@@ -40,13 +40,10 @@ exports.addfriend =  function(req, res){
    console.log('@ addfriend  @ users.js');
    //console.log('user_1_name' + JSON.stringify(user_1_name) );
    console.log('req.body :::'    + JSON.stringify(req.params));
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
    console.log('req.user :::'    + JSON.stringify(req.user));
    // addfriend(user_0_name, user_1_name) user_0 is whoever make request, user_1 is who are going to accept request 
 
-//    var user_1_name = 
+
 //    User.addfriend();
   // req.user.pendingFriendList.push({userName: req.params.username_1});
    //req.user.save();
@@ -133,7 +130,15 @@ function sendRequest(username_0, username_1){
    User.findOne({'username':username_1},function(err, result_user){
      console.log(JSON.stringify(result_user));
      result_user.awaitingFridendList.push({userName: username_0});
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+   console.log('++++++++++++++++++++++++++');
+
      console.log(JSON.stringify(result_user));
+     result_user.save();
    });
     //User.findOne({username:username_1 });
     //var thisUser = User.load();
