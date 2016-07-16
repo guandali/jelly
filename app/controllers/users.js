@@ -45,14 +45,14 @@ exports.addfriend =  function(req, res){
    console.log('++++++++++++++++++++++++++');
    console.log('req.user :::'    + JSON.stringify(req.user));
    // addfriend(user_0_name, user_1_name) user_0 is whoever make request, user_1 is who are going to accept request 
-   var user_0_name = req.user.username;
+
 //    var user_1_name = 
 //    User.addfriend();
-   req.user.pendingFriendList.push({userName: req.params.username_1});
-   req.user.save();
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
+  // req.user.pendingFriendList.push({userName: req.params.username_1});
+   //req.user.save();
+   // Send Request
+   
+   sendRequest(req.params.username_0,req.params.username_1);
    console.log('req.user :::'    + JSON.stringify(req.user));
 
 
@@ -67,6 +67,18 @@ exports.addfriend =  function(req, res){
 exports.get_search_results = function(req, res){
     // console.log('req.body.content   is');
     // console.log(req.body.content);
+           console.log('req.isAuthenticated) ::'+ JSON.stringify(req.isAuthenticated));
+           var names = [];
+           console.log('req.user'+JSON.stringify(req.user));
+     if ( typeof req.user != 'undefined'){
+           var arrayLength = req.user.pendingFriendList.length;
+            for (var i = 0; i < arrayLength; i ++ ){
+              names.push(req.user.pendingFriendList[i].userName);
+              console.log(names[i]);
+              console.log('In the loop');
+            }
+     }
+
     console.log(req.body.query_input);
     var key_word_for_search = req.body.query_input;
     User.find({username: new RegExp(key_word_for_search, "i")},function(err, result_user_by_keyword){
@@ -79,7 +91,7 @@ exports.get_search_results = function(req, res){
          res.render('searchresults', 
          {    
              title: title,
-             //names: names,
+             names: names,
              results:result_user_by_keyword 
 
          }
@@ -92,10 +104,6 @@ exports.session = login;
 
 function login(req, res) {
     console.log('users.session at users.js');
-    // const redirectTo = req.session.returnTo
-    //     ? req.session.returnTo
-    //     : '/';
-    // delete req.session.returnTo;
     console.log('req.body.username  :::: '+ req.body.username)
     res.redirect('/users/'+ req.body.username);
 }
@@ -109,7 +117,44 @@ exports.signup = function(req, res){
     });
     
 };
+exports.testten = wrap(function* (req, res){
+    console.log();
+    console.log();
+    console.log();
+    console.log('@ users @ testten');
+    test15();
+    console.log('Back to testten now');
+    
+});
+function sendRequest(username_0, username_1){
+   
+    console.log('sendRequest' + JSON.stringify(username_0));
+    //var options =  {username:username_1};
+   User.findOne({'username':username_1},function(err, result_user){
+     console.log(JSON.stringify(result_user));
+     result_user.awaitingFridendList.push({userName: username_0});
+     console.log(JSON.stringify(result_user));
+   });
+    //User.findOne({username:username_1 });
+    //var thisUser = User.load();
+    //console.log('thisUser    is'+ JSON.stringify(thisUser));
+    //thisUser.awaitingFridendList.push({userName: username_0});
+    //thisUser.save();
+       // 
+   // console.log('After saved thisUser   :');
+   // console.log(JSON.stringify(thisUser));
+    return; 
+
+
+}
+
+
+
+
 // Using passort logout
+
+
+
 exports.logout = wrap ( function* (req, res){
     console.log('@users.js:: users.logout');
     req.logout();
@@ -181,21 +226,7 @@ exports.loadUser = wrap (function*(req, res, next, username ){
     });
 });
 
-// exports.loadUser = wrap (function*(req, res, next, username ){
-//     const criteria = {username: username};
-//     console.log('username is at users.loadUser :: ' + username);
-//     User.findOne(criteria, function(err, result_user){
-//         req.profile = result_user
-//         if (!req.profile){
-//             console.log('!req.profile')
-//             return next(new Error('User not found'));
-//         }
-//         console.log('result_user is at users.loadUser ::'+JSON.stringify(result_user));
-//         next();
-        
 
-//     });
-// });
 
 exports.createuser = wrap (function* (req, res) {
   console.log('users.ts ::==> createuser')

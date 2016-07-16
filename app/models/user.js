@@ -27,6 +27,7 @@ const UserSchema = new Schema({
   name: { type: String, default: '' },
   username: {type: String, default:''},
   pendingFriendList:[FriendRequestSchema],
+  awaitingFridendList:[FriendRequestSchema],
     // Add something more ***** July 4th 2016
   friendList: [{
       username: String,
@@ -113,20 +114,20 @@ UserSchema.methods.encryptPassword = function(password){
  */
 
 UserSchema.static({
-    load: function ( options, cb ){
-        console.log('user.js :: user.load');
-        options.select = options.select || 'name username';
-        console.log('     options.select is' + options.select);
-        console.log('     options.criteria is' + JSON.stringify(options.criteria));
-        // this.findOne({username :'larry'}, function (err, result_user){
-        //     console.log('result_user  :::::::'+ JSON.stringify(result_user));
-        // });
-        return  this.findOne(options.criteria)
-               .select(options.select)
-               .exec(cb);
-        //console.log('load a user is :: ' + JSON.stringify(result_user));
+    // load: function ( options, cb ){
+    //     console.log('user.js :: user.load');
+    //     //options.select = options.select || 'name username';
+    //     console.log('     options.select is' + options.select);
+    //     console.log('     options.criteria is' + JSON.stringify(options.criteria));
+    //     // this.findOne({username :'larry'}, function (err, result_user){
+    //     //     console.log('result_user  :::::::'+ JSON.stringify(result_user));
+    //     // });
+    //     return  this.findOne(options.criteria)
+    //         //    .select(options.select)
+    //            .exec(cb);
+    //     //console.log('load a user is :: ' + JSON.stringify(result_user));
         
-    },
+    // },
     addFriend:function(){
         
     }

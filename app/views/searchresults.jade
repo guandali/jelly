@@ -24,12 +24,7 @@ html(lang='en')
 
         
 
-     if (!req.isAuthenticated)
-          - var names = [];
-          - var arrayLength = req.user.pendingFriendList.length;
-          -  for (var i = 0; i < arrayLength; i ++ )
-                -  names.push(req.user.pendingFriendList[i].userName);
-                - console.log(names[i]);
+     if (typeof req.user != 'undefined')
                 section#results
                 .container
                   .col.demo-tiles
@@ -50,16 +45,16 @@ html(lang='en')
                                   form(method='post', action= '/users/'+req.user.username+'/addfriend/' + result.username, role='form')
                                     button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
      else 
-        section#results
-          .container
-            .col.demo-tiles
-              .center
-                each result in results
-                  .col-xs-3
-                    .tile
-                        a( href="/users/"+result.username )
-                        img.tile-image.big-illustration(src="#{result.user_profile_photo}", width='45', height='45', alt='Compas')
-                        h3.tile-title #{result.username}
-                            ul 
-                            form(method='post', action= '', role='form')
-                              button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
+                  section#results
+                    .container
+                      .col.demo-tiles
+                        .center
+                          each result in results
+                            .col-xs-3
+                              .tile
+                                  a( href="/users/"+result.username )
+                                  img.tile-image.big-illustration(src="#{result.user_profile_photo}", width='45', height='45', alt='Compas')
+                                  h3.tile-title #{result.username}
+                                      ul 
+                                      form(method='post', action= '', role='form')
+                                        button#button0.btn.btn-primary.btn-large.btn-block(type='submit')  Add Friend Here
