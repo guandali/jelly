@@ -45,14 +45,14 @@ html(lang='en')
                 a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
                   i.fa.fa-fw.fa-bell-o
                   |  Message
-                  span.badge 0
+                  span.badge #{req.user.awaitingFridendList.length}
                 ul.dropdown-menu(role='menu')
                  each req_msg in req.user.awaitingFridendList
                   li
                     a(href='#')
                       i.fa.fa-fw.fa-tag
                       span.badge #{req_msg.userName}
-                      |  wants to add you as friend
+                      |  wants to add you as friend  
                       //- span.badge Video
                       //- |  sayfasında etiketlendi
                   //- li
