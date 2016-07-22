@@ -14,6 +14,35 @@ var cloudinary = require('cloudinary');
 exports.login = function (req, res) {
     res.render('login', { title: 'Login' });
 };
+exports.get_pop_up = function (req, res){
+   console.log('@ get_pop_up  @ users.js');
+   var req_name =  req.params.username; 
+   //console.log('user_1_name' + JSON.stringify(user_1_name) );
+   //console.log('req.params :::'    + JSON.stringify(req.params));
+    res.render('pop-up', {req_name: req_name});
+
+
+};
+// The following function allows username_0 to add username_1
+// remove usename_1 from username_0's pendingFriendList and 
+// Move it to friendList
+// After that redirect to userprofile page 
+
+exports.acceptfriend = function(req, res){
+    console.log('@ users :: acceptfriend ');
+    console.log('req.params :::'    + JSON.stringify(req.params));
+    console.log(JSON.stringify(req.user));
+
+
+
+
+
+}; 
+
+
+
+
+
 //  This routing is used to test flat-ui
 exports.testui = function (req, res){
    console.log(' @users.js This routing is used to test flat-ui::');
@@ -129,7 +158,7 @@ function sendRequest(username_0, username_1){
     //var options =  {username:username_1};
    User.findOne({'username':username_1},function(err, result_user){
      console.log(JSON.stringify(result_user));
-     result_user.awaitingFridendList.push({userName: username_0});
+     result_user.awaitingFridendList.push({userName: username_0} );
    console.log('++++++++++++++++++++++++++');
    console.log('++++++++++++++++++++++++++');
    console.log('++++++++++++++++++++++++++');

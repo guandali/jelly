@@ -53,6 +53,7 @@ module.exports = function (app, passport) {
   app.get('/test',users.testui);
   app.get('/test0', users.testone);
   app.get('/test10', users.testten);
+  app.get('/pop-up/:username', users.get_pop_up);
   // Post authencicate req to /users/session passport.authenticate
   
   app.post('/users/session', passport.authenticate
@@ -71,6 +72,7 @@ module.exports = function (app, passport) {
     next();
   });
   app.get('/users/:username',users.displayUser );
+  app.post('/users/:username_0/acceptfriend/:username_1',users.acceptfriend);
   app.post('/users/:username_0/addfriend/:username_1', users.addfriend);
   app.get('/logout', users.logout);
   // route to upload user's profile photo

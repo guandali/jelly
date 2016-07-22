@@ -14,7 +14,8 @@ var default_img_URL = 'http://res.cloudinary.com/dlehndc9n/image/upload/c_scale,
  *  FriendRequestSchema 
  */
 var FriendRequestSchema = new Schema({
-    userName: String, 
+    userName: String,
+    user_profile_photo: String, 
     requestMessage: {type:String, default: ''},
     date: Date 
     
@@ -30,6 +31,7 @@ const UserSchema = new Schema({
   awaitingFridendList:[FriendRequestSchema],
     // Add something more ***** July 4th 2016
   friendList: [{
+      friend_profile_photo: String,
       username: String,
       date: Date 
 

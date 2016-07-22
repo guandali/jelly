@@ -1,0 +1,141 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Flat UI - Free Bootstrap Framework and Theme
+    meta(name='description', content='Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version.')
+    meta(name='viewport', content='width=1000, initial-scale=1.0, maximum-scale=1.0')
+    // Loading Bootstrap
+    link(href='/Flat-UI/dist/css/vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // Loading Flat UI
+    link(href='/Flat-UI/dist/css/flat-ui.css', rel='stylesheet')
+    link(href='/Flat-UI/docs/assets/css/demo.css', rel='stylesheet')
+    link(rel='shortcut icon', href='/img/favicon.ico')
+    style.
+      #t-cards {
+           padding-top: 80px;
+           padding-bottom: 80px;
+           background-color: #345;    
+       }
+
+       .panel.panel-card {
+           position: relative;
+           height: 241px;
+           border: none;
+           overflow: hidden;
+       }
+       .panel.panel-card .panel-heading {
+           position: relative;
+           z-index: 2;
+           height: 120px;
+           border-bottom-color: #fff;
+           overflow: hidden;
+           
+           -webkit-transition: height 600ms ease-in-out;
+                   transition: height 600ms ease-in-out;
+       }
+       .panel.panel-card .panel-heading img {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           z-index: 1;
+           width: 120%;
+           
+           -webkit-transform: translate3d(-50%,-50%,0);
+                   transform: translate3d(-50%,-50%,0);
+       }
+       .panel.panel-card .panel-heading button {
+           position: absolute;
+           top: 10px;
+           right: 15px;
+           z-index: 3;
+       }
+       .panel.panel-card .panel-figure {
+           position: absolute;
+           top: auto;
+           left: 50%;
+           z-index: 3;
+           width: 70px;
+           height: 70px;
+           background-color: #fff;
+           border-radius: 50%;
+           opacity: 1;
+           -webkit-box-shadow: 0 0 0 3px #fff;
+                   box-shadow: 0 0 0 3px #fff;
+           
+           -webkit-transform: translate3d(-50%,-50%,0);
+                   transform: translate3d(-50%,-50%,0);
+           
+           -webkit-transition: opacity 400ms ease-in-out;
+                   transition: opacity 400ms ease-in-out;
+       }
+
+       .panel.panel-card .panel-body {
+           padding-top: 40px;
+           padding-bottom: 20px;
+
+           -webkit-transition: padding 400ms ease-in-out;
+                   transition: padding 400ms ease-in-out;
+       } 
+
+       .panel.panel-card .panel-thumbnails {
+           padding: 0 15px 20px;
+       }
+       .panel-thumbnails .thumbnail {
+           width: 60px;
+           max-width: 100%;
+           margin: 0 auto;
+           background-color: #fff;
+       } 
+
+
+       .panel.panel-card:hover .panel-heading {
+           height: 55px;
+           
+           -webkit-transition: height 400ms ease-in-out;
+                   transition: height 400ms ease-in-out;
+       }
+       .panel.panel-card:hover .panel-figure {
+           opacity: 0;
+           
+           -webkit-transition: opacity 400ms ease-in-out;
+                   transition: opacity 400ms ease-in-out;
+       }
+       .panel.panel-card:hover .panel-body {
+           padding-top: 20px;
+           
+           -webkit-transition: padding 400ms ease-in-out;
+                   transition: padding 400ms ease-in-out;
+       }
+    // HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file.
+    //if lt IE 9
+      script(src='dist/js/vendor/html5shiv.js')
+      script(src='dist/js/vendor/respond.min.js')
+
+   body
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    .container
+      .row
+        .col-sm-4
+          .card
+            canvas#header-blur.header-bg(width='250', height='70')
+            .avatar
+              img(src='', alt='')
+            .content
+              h3 #{req_name}
+              p  I love Bootstrap. Work for Themeforest
+              p
+                button.btn.btn-link(type='button')
+                  i.fa.fa-paper-plane
+                  |  Contact
+           .col-md-12
+            .btn-group
+             p
+              form(method='post', action= '/users/'+ req.user.username + '/acceptfriend/' + req_name , role='form')
+                button#button0.btn.btn-info.btn-sm(type='submit')  Accept Friend 
+             p
+              form(method='post', action= '/users/'+ req.user.username + '/refusefriend/' + req_name , role='form')
+                button#button0.btn.btn-danger.btn-sm(type='submit')  Ignore      
+
+           
+    
