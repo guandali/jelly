@@ -17,7 +17,7 @@ var storage = multer.diskStorage({
   }
 });
 var upload = multer({storage: storage});
-console.log('@routes.js      upload is   ::'+ JSON.stringify(upload));
+//console.log('@routes.js      upload is   ::'+ JSON.stringify(upload));
 
 //console.log(path);
 //console.log('@routes.js :: join    :'+ JSON.stringify(join));
@@ -53,7 +53,7 @@ module.exports = function (app, passport) {
   app.get('/test',users.testui);
   app.get('/test0', users.testone);
   app.get('/test10', users.testten);
-  app.get('/pop-up/:username', users.get_pop_up);
+  app.get('/pop-up/:req_msg', users.get_pop_up);
   // Post authencicate req to /users/session passport.authenticate
   
   app.post('/users/session', passport.authenticate
@@ -64,7 +64,16 @@ module.exports = function (app, passport) {
   }), users.session
   );
   //app.post('/users/session',users.testReq )
-  app.param('username', users.loadUser);
+
+  app.param('req_msg', function(req, res, next, req_msg){
+    req.req_msg = req_msg;
+    console.log('typeof req.request_info  is ' + typeof req.req_msg);
+    console.log('typeof req.user is ' + typeof req.user);
+    next();
+  });
+  app.param('username_0',function(req, res, next, id){
+    next();
+  });
   app.param('username_0',function(req, res, next, id){
     next();
   });

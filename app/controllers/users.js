@@ -16,10 +16,17 @@ exports.login = function (req, res) {
 };
 exports.get_pop_up = function (req, res){
    console.log('@ get_pop_up  @ users.js');
-   var req_name =  req.params.username; 
+   console.log('req.params  is ' + JSON.stringify(req.params));
+ 
+   console.log('req.params  is ' + req.params.req_msg);
+   console.log('typeof ' +  typeof req.params);
+   console.log('typeof  req.params is ' +  typeof req.params.req_msg);
+   var friend_req_info =  JSON.parse(req.params);
+   console.log('friend_req_info  (After parsed )  :' +friend_req_info + ' typeof is :' + typeof friend_req_info);
+   //console.log('req.params  is ' + req.params.req_msg._id);
    //console.log('user_1_name' + JSON.stringify(user_1_name) );
    //console.log('req.params :::'    + JSON.stringify(req.params));
-    res.render('pop-up', {req_name: req_name});
+    //res.render('pop-up', {friend_req_info : friend_req_info });
 
 
 };
@@ -74,6 +81,7 @@ exports.addfriend =  function(req, res){
 
 
 //    User.addfriend();
+ // Following line is disbaled 
   // req.user.pendingFriendList.push({userName: req.params.username_1});
    //req.user.save();
    // Send Request
@@ -207,9 +215,10 @@ exports.displayUser = wrap( function* (req, res, next){
       //console.log('@displayUser  @users.js ::' +'PLZ LOGIN');
       res.redirect('/login');
     };
-    //console.log('@users.displayUser ---> req.profile  :: '+ JSON.stringify(req.profile));
-
-    var user = req.profile;
+    console.log('@users.displayUser ---> req.user  :' + JSON.stringify(req.user));
+    console.log('@users.displayUser ---> req.profile  :: '+ JSON.stringify(req.profile));
+     var user = req.user;
+    //var user = req.profile;
     console.log('@users.loadUser :: user.username:::'+ user.username);
     //Horizontal Access Control::
     console.log('user._id is :::'+user._id);

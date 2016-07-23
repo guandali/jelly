@@ -64,7 +64,7 @@ html(lang='en')
                 ul.dropdown-menu(role='menu')
                  each req_msg in req.user.awaitingFridendList
                   li
-                    a.view-pdf(href='/pop-up/'+req_msg.userName)
+                    a.view-pdf(href='/pop-up/'+req_msg)
                       i.fa.fa-fw.fa-tag
                       span.badge #{req_msg.userName}
                       |  wants to add you as friend  
