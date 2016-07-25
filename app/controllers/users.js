@@ -43,7 +43,7 @@ exports.acceptfriend = function(req, res){
     console.log('req.params :::'    + JSON.stringify(req.params));
     console.log('req.params.accept_user_id is :'+ JSON.stringify(req.params.accept_user_id));
     var doc = req.user.awaitingFridendList.id(req.params.accept_user_id);
-    console.log('From list '   + JSON.stringify(doc));
+    console.log('From list doc is '   + JSON.stringify(doc));
     console.log('**');
     console.log('**');
     console.log('**');
@@ -66,7 +66,7 @@ exports.acceptfriend = function(req, res){
                                     });
         // save 
         req.user.save(function (err){
-           if (err) console.log('@ users  @ acceptfriend  failed when save user ');
+           if (err) console.log('@ users  @ acceptfriend  failed when save req.user ');
            console.log('Success');
            console.log('**');
            console.log('**');
@@ -86,11 +86,21 @@ exports.acceptfriend = function(req, res){
             result_user.friendList.push({
                                             friend_profile_photo: req.user.user_profile_photo,
                                             username: req.user.username,
-                                            date: date_since_friend
+                                            date: date_since_friend 
 
         
                                     });
+            result_user.save(function(err){
+            if (err) console.log('@ users  @ acceptfriend  failed when save result_user ');
+            console.log('result_user.friendList  ::' + JSON.stringify(result_user.friendList));
 
+            });      
+            //Now need to remove it from pending list 
+            result_user.pendingFriendList.id(check_id).remove();
+            result_user.save();
+            console.log('AT the end: ' +  JSON.stringify(result_user));
+            res.redirect(testone);    
+ 
             
            
 
