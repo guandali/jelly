@@ -53,7 +53,7 @@ module.exports = function (app, passport) {
   app.get('/test',users.testui);
   app.get('/test0', users.testone);
   app.get('/test10', users.testten);
-  app.get('/pop-up/:req_msg', users.get_pop_up);
+  app.get('/pop-up/:username_0/:request_id', users.get_pop_up);
   // Post authencicate req to /users/session passport.authenticate
   
   app.post('/users/session', passport.authenticate
@@ -65,15 +65,16 @@ module.exports = function (app, passport) {
   );
   //app.post('/users/session',users.testReq )
 
-  app.param('req_msg', function(req, res, next, req_msg){
-    req.req_msg = req_msg;
-    console.log('typeof req.request_info  is ' + typeof req.req_msg);
-    console.log('typeof req.user is ' + typeof req.user);
+  // app.param('req_msg', function(req, res, next, req_msg){
+  //   req.req_msg = req_msg;
+  //   console.log('typeof req.request_info  is ' + typeof req.req_msg);
+  //   console.log('typeof req.user is ' + typeof req.user);
+  //   next();
+  // });
+
+   app.param('accept_user_id',function(req, res, next, id){
     next();
-  });
-  app.param('username_0',function(req, res, next, id){
-    next();
-  });
+   });
   app.param('username_0',function(req, res, next, id){
     next();
   });
@@ -81,7 +82,7 @@ module.exports = function (app, passport) {
     next();
   });
   app.get('/users/:username',users.displayUser );
-  app.post('/users/:username_0/acceptfriend/:username_1',users.acceptfriend);
+  app.post('/users/acceptfriend/:accept_user_id',users.acceptfriend);
   app.post('/users/:username_0/addfriend/:username_1', users.addfriend);
   app.get('/logout', users.logout);
   // route to upload user's profile photo

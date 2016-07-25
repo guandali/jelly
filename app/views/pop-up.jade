@@ -122,7 +122,8 @@ html(lang='en')
             .avatar
               img(src='', alt='')
             .content
-              h3 #{friend_req_info.userName}
+              h3 #{friend_req_info.username}
+              h4 #{friend_req_info.user_id}
               p  I love Bootstrap. Work for Themeforest
               p
                 button.btn.btn-link(type='button')
@@ -131,10 +132,10 @@ html(lang='en')
            .col-md-12
             .btn-group
              p
-              form(method='post', action= '/users/'+ req.user.username + '/acceptfriend/' + req_name , role='form')
+              form(method='post', action= '/users/acceptfriend/' + friend_req_info.user_id , role='form')
                 button#button0.btn.btn-info.btn-sm(type='submit')  Accept Friend 
              p
-              form(method='post', action= '/users/'+ req.user.username + '/refusefriend/' + req_name , role='form')
+              form(method='post', action= '/users/refusefriend/' + friend_req_info.user_id  , role='form')
                 button#button0.btn.btn-danger.btn-sm(type='submit')  Ignore      
 
            

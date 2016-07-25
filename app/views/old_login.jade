@@ -1,12 +1,12 @@
-extends ./layouts/default.jade
-block main
-  h2= title
-    li
-    button(type="button", onclick="location.href='/signup'") Sign up for new account here
-   form(class = 'form-horizontal', name='login', action='/users/session', method='POST')
-    li
-    input(id= 'username',type='text', name='username', placeholder='User Name', value='', required)
-    li
-    input(id = 'password',type='password', name="password",pattern=".{6,}",placeholder='Enter your password here',value = '',required)
-    li
-    button(type='submit', name='submit_button') Log in Here
+ section#results
+ .center
+ .col-xs-3
+ .tile
+   
+    h3.tile-title #{req_name}
+    ul
+     .btn-group
+       form(method='post', action= '', role='form')
+        button#button0.btn.btn-primary.btn-large(type='submit')  Accept Friend 
+       form(method='post', action= '', role='form')
+        button#button0.btn.btn-danger.btn-large(type='submit')  Ignore  

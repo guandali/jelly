@@ -18,15 +18,18 @@ exports.get_pop_up = function (req, res){
    console.log('@ get_pop_up  @ users.js');
    console.log('req.params  is ' + JSON.stringify(req.params));
  
-   console.log('req.params  is ' + req.params.req_msg);
+   //console.log('req.params  is ' + req.params.req_msg);
    console.log('typeof ' +  typeof req.params);
-   console.log('typeof  req.params is ' +  typeof req.params.req_msg);
-   var friend_req_info =  JSON.parse(req.params);
-   console.log('friend_req_info  (After parsed )  :' +friend_req_info + ' typeof is :' + typeof friend_req_info);
+   var friend_req_info = {'username':req.params.username_0,
+                          'user_id': req.params.request_id
+                         };
+   //console.log('typeof  req.params is ' +  typeof req.params.req_msg);
+   //var friend_req_info =  JSON.parse(req.params);
+   //console.log('friend_req_info  (After parsed )  :' +friend_req_info + ' typeof is :' + typeof friend_req_info);
    //console.log('req.params  is ' + req.params.req_msg._id);
    //console.log('user_1_name' + JSON.stringify(user_1_name) );
    //console.log('req.params :::'    + JSON.stringify(req.params));
-    //res.render('pop-up', {friend_req_info : friend_req_info });
+    res.render('pop-up', {friend_req_info : friend_req_info });
 
 
 };
@@ -38,7 +41,68 @@ exports.get_pop_up = function (req, res){
 exports.acceptfriend = function(req, res){
     console.log('@ users :: acceptfriend ');
     console.log('req.params :::'    + JSON.stringify(req.params));
-    console.log(JSON.stringify(req.user));
+    console.log('req.params.accept_user_id is :'+ JSON.stringify(req.params.accept_user_id));
+    var doc = req.user.awaitingFridendList.id(req.params.accept_user_id);
+    console.log('From list '   + JSON.stringify(doc));
+    console.log('**');
+    console.log('**');
+    console.log('**');
+    console.log('**');
+    console.log(' Before :req.user.friendList' + JSON.stringify(req.user.friendList) );
+    // Steps ::
+    //         1. findOne this user, get profile picture link 
+    //         2. Save retrived data and push it into req.user.friendList ==>  save
+    //         3. Remove this user from awaitingFridendList  ==> save 
+    //         4. Inform the user has been accpeted pendingFriendList to friendList 
+        User.find({username: doc.userName},function(err, result_user){
+            var date_since_friend = Date.now();
+           console.log('result_user :  ' + JSON.stringify(result_user));
+           req.user.friendList.push({
+                                     friend_profile_photo: result_user.user_profile_photo,
+                                     username: doc.userName,
+                                     date: date_since_friend
+
+        
+                                    });
+        // save 
+        req.user.save(function (err){
+           if (err) console.log('@ users  @ acceptfriend  failed when save user ');
+           console.log('Success');
+           console.log('**');
+           console.log('**');
+           var check_id; 
+           // Implemente ref later  
+           var arrayLength = result_user.pendingFriendList.length;
+            for (var i = 0; i < arrayLength; i ++ ){
+               if(   req.user.username === result_user.pendingFriendList[i].userName ) {
+                    check_id = result_user.pendingFriendList[i]._id;
+                    console.log('check_id ::' + check_id);
+                    break;
+
+               }
+            }
+            // If check_id !== undefined
+            // Reverse to insert into result_user 
+            result_user.friendList.push({
+                                            friend_profile_photo: req.user.user_profile_photo,
+                                            username: req.user.username,
+                                            date: date_since_friend
+
+        
+                                    });
+
+            
+           
+
+
+
+        });
+        // Remove from 
+
+        
+
+
+    });
 
 
 
