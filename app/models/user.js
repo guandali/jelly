@@ -63,6 +63,7 @@ UserSchema
 
 UserSchema.pre('save', function (next) {
     if (!this.isNew)
+       console.log('@ user.');
         return next();
     if (!validatePresenceOf(this.password) ) {
         next(new Error('Invalid password'));
@@ -71,6 +72,13 @@ UserSchema.pre('save', function (next) {
         next();
     }
 });
+UserSchema.pre('find', function (next) {
+        console.log('pre find ');
+
+        next();
+  
+});
+
 
 /**
  * User plugin

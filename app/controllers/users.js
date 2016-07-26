@@ -42,6 +42,8 @@ exports.acceptfriend = function(req, res){
     console.log('@ users :: acceptfriend ');
     console.log('req.params :::'    + JSON.stringify(req.params));
     console.log('req.params.accept_user_id is :'+ JSON.stringify(req.params.accept_user_id));
+
+
     var doc = req.user.awaitingFridendList.id(req.params.accept_user_id);
     console.log('From list doc is '   + JSON.stringify(doc));
     console.log('**');
@@ -54,9 +56,16 @@ exports.acceptfriend = function(req, res){
     //         2. Save retrived data and push it into req.user.friendList ==>  save
     //         3. Remove this user from awaitingFridendList  ==> save 
     //         4. Inform the user has been accpeted pendingFriendList to friendList 
-        User.find({username: doc.userName},function(err, result_user){
-            var date_since_friend = Date.now();
-           console.log('result_user :  ' + JSON.stringify(result_user));
+        User.findOne({username: doc.userName},function(err, result_user){
+           var date_since_friend = Date.now();
+           console.log('-----------------------------');
+           console.log('-----------------------------');
+           console.log('-----------------------------');
+           console.log('result.pendingFriendList ' + JSON.stringify( result_user.pendingFriendList ));
+           console.log('result :  ' + JSON.stringify(result_user));
+           console.log('typeof result ' + typeof  result_user);
+           // Add a new element into friendlist()
+           
            req.user.friendList.push({
                                      friend_profile_photo: result_user.user_profile_photo,
                                      username: doc.userName,
@@ -65,14 +74,26 @@ exports.acceptfriend = function(req, res){
         
                                     });
         // save 
-        req.user.save(function (err){
-           if (err) console.log('@ users  @ acceptfriend  failed when save req.user ');
-           console.log('Success');
-           console.log('**');
-           console.log('**');
+        //    yield        req.user.save(function (err){
+        //    if (err) console.log('@ users  @ acceptfriend  failed when save req.user ');
+        //    console.log('Success');
+        //    console.log('req.user.friendList ::' + JSON.stringify(req.user.friendList) );
+        //    console.log('');
+        //    console.log('');
+        //    console.log('');
+        //    console.log('***************DEBUG*************');
+        //    });
+           console.log('***************DEBUG-0*************');
+           req.user.save();
+           
            var check_id; 
-           // Implemente ref later  
-           var arrayLength = result_user.pendingFriendList.length;
+           // Implemente ref later  friendList
+           console.log('typeof result_user ' + typeof result_user.friendList);
+           console.log('result_user.friendList ' + JSON.stringify(result_user.friendList ));
+           console.log('result_user.pendingFriendList ' + JSON.stringify(result_user.pendingFriendList ));
+          // console.log('result_user.pendingFriendList count   ::'+JSON.stringify(result_user.pendingFriendList.count()));
+           console.log('typeof result_user.pendingFriendList   '  + typeof result_user.pendingFriendList);
+           var arrayLength2 = result_user.pendingFriendList.length;
             for (var i = 0; i < arrayLength; i ++ ){
                if(   req.user.username === result_user.pendingFriendList[i].userName ) {
                     check_id = result_user.pendingFriendList[i]._id;
@@ -81,8 +102,14 @@ exports.acceptfriend = function(req, res){
 
                }
             }
+            console.log('***************DEBUG-1*************');
             // If check_id !== undefined
             // Reverse to insert into result_user 
+            console.log('');
+            console.log('');
+            console.log('');
+            console.log('Before push: ' +  JSON.stringify(result_user.friendList)); 
+            
             result_user.friendList.push({
                                             friend_profile_photo: req.user.user_profile_photo,
                                             username: req.user.username,
@@ -90,24 +117,27 @@ exports.acceptfriend = function(req, res){
 
         
                                     });
+            console.log('***************DEBUG-3*************');
             result_user.save(function(err){
             if (err) console.log('@ users  @ acceptfriend  failed when save result_user ');
-            console.log('result_user.friendList  ::' + JSON.stringify(result_user.friendList));
+            //console.log('result_user.friendList  ::' + JSON.stringify(result_user.friendList));
 
-            });      
+            });
+            console.log('');
+            console.log('');
+            console.log('');
+            console.log('After push: ' +  JSON.stringify(result_user.friendList)); 
+            console.log('');
+            console.log('');
+            console.log('');
+            console.log('Before remove: ' +  JSON.stringify(result_user.pendingFriendList));      
             //Now need to remove it from pending list 
             result_user.pendingFriendList.id(check_id).remove();
             result_user.save();
-            console.log('AT the end: ' +  JSON.stringify(result_user));
-            res.redirect(testone);    
- 
-            
-           
-
-
-
-        });
+            console.log('AT the end: ' +  JSON.stringify(result_user.pendingFriendList));
+            res.redirect(testone);   
         // Remove from 
+
 
         
 
@@ -156,12 +186,12 @@ exports.addfriend =  function(req, res){
 
 //    User.addfriend();
  // Following line is disbaled 
-  // req.user.pendingFriendList.push({userName: req.params.username_1});
-   //req.user.save();
+    req.user.pendingFriendList.push({userName: req.params.username_1});
+    req.user.save();
    // Send Request
    
    sendRequest(req.params.username_0,req.params.username_1);
-   console.log('req.user :::'    + JSON.stringify(req.user));
+   console.log('req.user.pendingFriendList :::'    + JSON.stringify(req.user.pendingFriendList));
 
 
 };
