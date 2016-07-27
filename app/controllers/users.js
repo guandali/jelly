@@ -46,54 +46,86 @@ exports.acceptfriend = function(req, res){
 
     var doc = req.user.awaitingFridendList.id(req.params.accept_user_id);
     console.log('From list doc is '   + JSON.stringify(doc));
+    if (doc === null ) res.redirect('/');
     console.log('**');
     console.log('**');
     console.log('**');
     console.log('**');
-    console.log(' Before :req.user.friendList' + JSON.stringify(req.user.friendList) );
     // Steps ::
     //         1. findOne this user, get profile picture link 
     //         2. Save retrived data and push it into req.user.friendList ==>  save
     //         3. Remove this user from awaitingFridendList  ==> save 
     //         4. Inform the user has been accpeted pendingFriendList to friendList 
         User.findOne({username: doc.userName},function(err, result_user){
+            console.log('Getting result_user');
            var date_since_friend = Date.now();
-           console.log('-----------------------------');
-           console.log('-----------------------------');
-           console.log('-----------------------------');
-           console.log('result.pendingFriendList ' + JSON.stringify( result_user.pendingFriendList ));
-           console.log('result :  ' + JSON.stringify(result_user));
-           console.log('typeof result ' + typeof  result_user);
-           // Add a new element into friendlist()
-           
-           req.user.friendList.push({
+        //    console.log('-----------------------------');
+        //    console.log('-----------------------------');
+        //    console.log('-----------------------------');
+        //    console.log('result.pendingFriendList ' + JSON.stringify( result_user.pendingFriendList ));
+        //    console.log('result :  ' + JSON.stringify(result_user));
+        //    console.log('typeof result ' + typeof  result_user);
+        //    // Add a new element into friendlist()
+           User.findById({_id: req.user._id }, function (err, req_user){
+               console.log('');
+               console.log('');
+               console.log('-------------findById---------------');
+               console.log('what  req_user find BEFORE PUSH    ' + JSON.stringify(req_user));
+               req_user.friendList.push({
                                      friend_profile_photo: result_user.user_profile_photo,
                                      username: doc.userName,
                                      date: date_since_friend
 
         
                                     });
-        // save 
-        //    yield        req.user.save(function (err){
-        //    if (err) console.log('@ users  @ acceptfriend  failed when save req.user ');
-        //    console.log('Success');
-        //    console.log('req.user.friendList ::' + JSON.stringify(req.user.friendList) );
-        //    console.log('');
-        //    console.log('');
-        //    console.log('');
-        //    console.log('***************DEBUG*************');
-        //    });
-           console.log('***************DEBUG-0*************');
-           req.user.save();
+              req_user.save();
+              console.log('what  req.user_id find AFTER PUSH    ' + JSON.stringify(req_user));
+              console.log('');
+              console.log('');
+              console.log('');
+              console.log('awaitingFridendList before remove ::' + JSON.stringify(req_user.awaitingFridendList));
+            // remove from awaitingFridendList 
+              req_user.awaitingFridendList.id(req.params.accept_user_id).remove();
+              console.log('');
+              console.log('');
+              console.log('');
+              console.log('After remove :  req_users.awaitingFridendList '  + JSON.stringify(req_user.awaitingFridendList));
+              // save here  
+              req_user.save();
+                
+           });
+
+        //    req.user.friendList.push({
+        //                              friend_profile_photo: result_user.user_profile_photo,
+        //                              username: doc.userName,
+        //                              date: date_since_friend
+
+        
+        //                             });
+        //   console.log();
+        //   console.log('awaitingFridendList before remove ::' + JSON.stringify(req.user.awaitingFridendList));
+        //   // remove from awaitingFridendList 
+        //  (req.user.awaitingFridendList.id(req.params.accept_user_id)).remove();
+        // // save 
+        // //    yield        req.user.save(function (err){
+        // //    if (err) console.log('@ users  @ acceptfriend  failed when save req.user ');
+        // //    console.log('Success');
+        // //    console.log('req.user.friendList ::' + JSON.stringify(req.user.friendList) );
+        // //    console.log('');
+        // //    console.log('');
+        // //    console.log('');
+        // //    console.log('***************DEBUG*************');
+        // //    });
+        //    console.log('***************DEBUG-0*************');
+        //    req.user.save();
+           
+        //    console.log('After remove :  req.users.awaitingFridendList '  + JSON.stringify(req.user.awaitingFridendList));
+        //    console.log('req.user save:: '  + JSON.stringify(req.user));
            
            var check_id; 
            // Implemente ref later  friendList
-           console.log('typeof result_user ' + typeof result_user.friendList);
-           console.log('result_user.friendList ' + JSON.stringify(result_user.friendList ));
-           console.log('result_user.pendingFriendList ' + JSON.stringify(result_user.pendingFriendList ));
-          // console.log('result_user.pendingFriendList count   ::'+JSON.stringify(result_user.pendingFriendList.count()));
-           console.log('typeof result_user.pendingFriendList   '  + typeof result_user.pendingFriendList);
-           var arrayLength2 = result_user.pendingFriendList.length;
+           var arrayLength = result_user.pendingFriendList.length;
+           console.log('arrayLength   : ' + arrayLength);
             for (var i = 0; i < arrayLength; i ++ ){
                if(   req.user.username === result_user.pendingFriendList[i].userName ) {
                     check_id = result_user.pendingFriendList[i]._id;
@@ -117,26 +149,25 @@ exports.acceptfriend = function(req, res){
 
         
                                     });
-            console.log('***************DEBUG-3*************');
-            result_user.save(function(err){
-            if (err) console.log('@ users  @ acceptfriend  failed when save result_user ');
-            //console.log('result_user.friendList  ::' + JSON.stringify(result_user.friendList));
-
-            });
+            console.log('***************DEBUG-2*************');
             console.log('');
             console.log('');
             console.log('');
-            console.log('After push: ' +  JSON.stringify(result_user.friendList)); 
+            result_user.save();
             console.log('');
             console.log('');
             console.log('');
-            console.log('Before remove: ' +  JSON.stringify(result_user.pendingFriendList));      
+            console.log('After push: ' +  JSON.stringify(result_user)); 
+            console.log('');
+            console.log('');
+            console.log('');
+            console.log('BEFORE remove from pendingList: ' +  JSON.stringify(result_user.pendingFriendList));      
             //Now need to remove it from pending list 
             result_user.pendingFriendList.id(check_id).remove();
             result_user.save();
-            console.log('AT the end: ' +  JSON.stringify(result_user.pendingFriendList));
-            res.redirect(testone);   
-        // Remove from 
+            console.log('AFTER remove from pendingList:' +  JSON.stringify(result_user.pendingFriendList));
+            res.redirect('/');   
+        //Remove from 
 
 
         
