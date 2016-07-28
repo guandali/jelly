@@ -12,21 +12,6 @@ html(lang='en')
     link(href='/Flat-UI/dist/css/flat-ui.css', rel='stylesheet')
     link(href='/Flat-UI/docs/assets/css/demo.css', rel='stylesheet')
     link(rel='shortcut icon', href='img/favicon.ico')
-    style.
-          .iframe-container {    
-              padding-bottom: 60%;
-              padding-top: 30px; height: 0; overflow: hidden;
-          }
-          
-          .iframe-container iframe,
-          .iframe-container object,
-          .iframe-container embed {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-          }
     // HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file.
     //if lt IE 9
       script(src='dist/js/vendor/html5shiv.js')
@@ -56,23 +41,16 @@ html(lang='en')
                            autosave="byways-search",
                            required)
                          button.btn.btn-default(type='submit') Submit
-               if (req.isAuthenticated())
-                li.dropdown
-                  a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                    i.fa.fa-fw.fa-bell-o
-                    |  Message
-                    span.badge #{req.user.awaitingFridendList.length}
-                  ul.dropdown-menu(role='menu')
-                  each req_msg in req.user.awaitingFridendList
-                    li
-                      a.view-pdf(href='/pop-up/'+ req_msg.userName +'/' + req_msg._id)
-                        i.fa.fa-fw.fa-tag
-                        span.badge #{req_msg.userName}
-                        |  wants to add you as friend  
-                        &nbsp
-                        span.fui-plus-circle 
-
-
+               li.dropdown
+                 a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
+                   | Club/Plan Setup
+                   span.caret
+                 ul.dropdown-menu
+                   li
+                     a(href='#fakelink') Configure Clubs
+                   li
+                     a(href='#fakelink') Configure Feature Plans
+                 // /Sub menu
                li.dropdown
                  a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
                    | Promo Setup
@@ -90,8 +68,13 @@ html(lang='en')
                    p.navbar-text.navbar-right
                      | Signed in as 
                      a.navbar-link(href='/users/'+ req.user.username) #{req.user.username}
-
-
+             //-   if (req.isAuthenticated())
+             //-    li.dropdown  
+             //-     #bs-example-navbar-collapse-17.collapse.navbar-collapse
+             //-      p.navbar-text.navbar-right
+             //-        | Signed in as
+             //-        a.navbar-link(href= '/users/'+ req.user.username)
+             //-          strong  #{req.user.username}
 
                 
     .row
@@ -115,11 +98,9 @@ html(lang='en')
 
 
 
-
          
     // jQuery (necessary for Bootstrap's JavaScript plugins)
-    script(src='/Flat-UI/dist/js/vendor/jquery.min.js')
+    script(src='Flat-UI/dist/js/vendor/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
-    script(src='/Flat-UI/dist/js/flat-ui.min.js')
-    script(src='/Flat-UI/assets/js/application.js')
-    script(src= '/myjsfiles/pop-up.js')
+    script(src='Flat-UI/dist/js/flat-ui.min.js')
+    script(src='Flat-UI/assets/js/application.js')

@@ -59,12 +59,6 @@ exports.acceptfriend = function(req, res){
         User.findOne({username: doc.userName},function(err, result_user){
             console.log('Getting result_user');
            var date_since_friend = Date.now();
-        //    console.log('-----------------------------');
-        //    console.log('-----------------------------');
-        //    console.log('-----------------------------');
-        //    console.log('result.pendingFriendList ' + JSON.stringify( result_user.pendingFriendList ));
-        //    console.log('result :  ' + JSON.stringify(result_user));
-        //    console.log('typeof result ' + typeof  result_user);
         //    // Add a new element into friendlist()
            User.findById({_id: req.user._id }, function (err, req_user){
                console.log('');
@@ -83,13 +77,13 @@ exports.acceptfriend = function(req, res){
               console.log('');
               console.log('');
               console.log('');
-              console.log('awaitingFridendList before remove ::' + JSON.stringify(req_user.awaitingFridendList));
+              console.log('awaitingFridendList BEFORE  REMOVE ::' + JSON.stringify(req_user.awaitingFridendList));
             // remove from awaitingFridendList 
               req_user.awaitingFridendList.id(req.params.accept_user_id).remove();
               console.log('');
               console.log('');
               console.log('');
-              console.log('After remove :  req_users.awaitingFridendList '  + JSON.stringify(req_user.awaitingFridendList));
+              console.log('AFTER REMOVE  :  req_users.awaitingFridendList '  + JSON.stringify(req_user.awaitingFridendList));
               // save here  
               req_user.save();
                 
