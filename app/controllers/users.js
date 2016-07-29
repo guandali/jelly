@@ -88,33 +88,6 @@ exports.acceptfriend = function(req, res){
               req_user.save();
                 
            });
-
-        //    req.user.friendList.push({
-        //                              friend_profile_photo: result_user.user_profile_photo,
-        //                              username: doc.userName,
-        //                              date: date_since_friend
-
-        
-        //                             });
-        //   console.log();
-        //   console.log('awaitingFridendList before remove ::' + JSON.stringify(req.user.awaitingFridendList));
-        //   // remove from awaitingFridendList 
-        //  (req.user.awaitingFridendList.id(req.params.accept_user_id)).remove();
-        // // save 
-        // //    yield        req.user.save(function (err){
-        // //    if (err) console.log('@ users  @ acceptfriend  failed when save req.user ');
-        // //    console.log('Success');
-        // //    console.log('req.user.friendList ::' + JSON.stringify(req.user.friendList) );
-        // //    console.log('');
-        // //    console.log('');
-        // //    console.log('');
-        // //    console.log('***************DEBUG*************');
-        // //    });
-        //    console.log('***************DEBUG-0*************');
-        //    req.user.save();
-           
-        //    console.log('After remove :  req.users.awaitingFridendList '  + JSON.stringify(req.user.awaitingFridendList));
-        //    console.log('req.user save:: '  + JSON.stringify(req.user));
            
            var check_id; 
            // Implemente ref later  friendList
@@ -128,7 +101,7 @@ exports.acceptfriend = function(req, res){
 
                }
             }
-            console.log('***************DEBUG-1*************');
+            console.log('***************DEBUG-0*************');
             // If check_id !== undefined
             // Reverse to insert into result_user 
             console.log('');
