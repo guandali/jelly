@@ -56,21 +56,6 @@ html(lang='en')
                            autosave="byways-search",
                            required)
                          button.btn.btn-default(type='submit') Submit
-            
-               li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                  i.fa.fa-fw.fa-bell-o
-                  |  Message
-                  span.badge #{req.user.awaitingFridendList.length}
-                ul.dropdown-menu(role='menu')
-                 each req_msg in req.user.awaitingFridendList
-                  li
-                    a.view-pdf(href='/pop-up/'+ req_msg.userName +'/' + req_msg._id)
-                      i.fa.fa-fw.fa-tag
-                      span.badge #{req_msg.userName}
-                      |  wants to add you as friend  
-                      &nbsp
-                      span.fui-plus-circle 
 
 
                li.dropdown
@@ -90,6 +75,20 @@ html(lang='en')
                    p.navbar-text.navbar-right
                      | Signed in as 
                      a.navbar-link(href='/users/'+ req.user.username) #{req.user.username}
+               li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                  i.fa.fa-fw.fa-bell-o
+                  |  Message
+                  span.badge #{req.user.awaitingFridendList.length}
+                ul.dropdown-menu(role='menu')
+                 each req_msg in req.user.awaitingFridendList
+                  li
+                    a.view-pdf(href='/pop-up/'+ req_msg.userName +'/' + req_msg._id)
+                      i.fa.fa-fw.fa-tag
+                      span.badge #{req_msg.userName}
+                      |  wants to add you as friend  
+                      &nbsp
+                      span.fui-plus-circle 
 
 
 
