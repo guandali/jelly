@@ -7,11 +7,34 @@ html
 body 
     .container
       .row
-        .col-md-5.toppad.pull-right.col-md-offset-3
-          a(href='/test10') Test Link 
-          a.btn.btn-danger.btn-block(href='/logout') Logout
-          br
-          p.text-info May 05,2014,03:00 pm 
+        .col-xs-12.col-sm-offset-3.col-sm-6
+          .panel.panel-default
+            .panel-heading
+              span.title Contacts
+              ul.pull-right
+            ul#contact-list.list-group
+              each display_item in req.user.friendList 
+                  li.list-group-item
+                    .col-xs-12.col-sm-3
+                      img.img-responsive.img-circle(src='#{display_item.friend_profile_photo}', alt='Compas')
+                    .col-xs-12.col-sm-9
+                      span.name #{display_item.username}
+                      br
+                      span.glyphicon.glyphicon-map-marker.text-muted.c-info(data-toggle='tooltip', title='5842 Hillcrest Rd')
+                      span.visible-xs
+                        span.text-muted Friend since #{display_item.username}
+                        br
+                      span.glyphicon.glyphicon-earphone.text-muted.c-info(data-toggle='tooltip', title='(870) 288-4149')
+                      span.visible-xs
+                        span.text-muted (870) 288-4149
+                        br
+                      span.fa.fa-comments.text-muted.c-info(data-toggle='tooltip', title='scott.stevens@example.com')
+                      span.visible-xs
+                        span.text-muted scott.stevens@example.com
+                        br
+                    .clearfix
+ 
+      .row
         .col-xs-12.col-sm-12.col-md-6.col-lg-6.col-xs-offset-0.col-sm-offset-0.col-md-offset-3.col-lg-offset-3.toppad
           .panel.panel-info
             .panel-heading
@@ -24,9 +47,6 @@ body
                 .col-md-9.col-lg-9
                   table.table.table-user-information
                     tbody
-                      tr
-                        td Department:
-                        td Programming
                       tr
                         td Hire date:
                         td 06/23/2013
@@ -50,6 +70,7 @@ body
                         br
                         br
                         | 555-4567-890(Mobile)
+                   .clearfix
                   a.btn.btn-primary(href='#') My Sales Performance
                   a.btn.btn-primary(href='#') Team Sales Performance
             .panel-footer
@@ -61,47 +82,12 @@ body
                 a.btn.btn-sm.btn-danger(data-original-title='Remove this user', data-toggle='tooltip', type='button')
                   i.glyphicon.glyphicon-remove
              a#back-to-bootsnipp.btn.btn-danger.hide(href='http://bootsnipp.com/mouse0270/snippets/4l0k2') Back to Bootsnipp
-  .container
-    .row
-      .col-xs-12.col-sm-offset-3.col-sm-6
-        .panel.panel-default
-          .panel-heading
-            span.title Contacts
-            ul.pull-right
-              li
-                a.hide-search(href='#', data-command='toggle-search', data-toggle='tooltip', data-placement='top', title='Toggle Search')
-                  i.glyphicon.glyphicon-plus
-          .row(style='display: none;')
-            .col-xs-12
-              .input-group.c-search
-                input#contact-list-search.form-control(type='text')
-                span.input-group-btn
-                  button.btn.btn-default(type='button')
-                    span.glyphicon.glyphicon-search.text-muted
-          ul#contact-list.list-group
-             each display_item in req.user.friendList 
-                li.list-group-item
-                  .col-xs-12.col-sm-3
-                    img.img-responsive.img-circle(src='#{display_item.friend_profile_photo}', alt='Compas')
-                  .col-xs-12.col-sm-9
-                    span.name #{display_item.username}
-                    br
-                    span.glyphicon.glyphicon-map-marker.text-muted.c-info(data-toggle='tooltip', title='5842 Hillcrest Rd')
-                    span.visible-xs
-                      span.text-muted Friend since #{display_item.date}
-                      br
-                    span.glyphicon.glyphicon-earphone.text-muted.c-info(data-toggle='tooltip', title='(870) 288-4149')
-                    span.visible-xs
-                      span.text-muted (870) 288-4149
-                      br
-                    span.fa.fa-comments.text-muted.c-info(data-toggle='tooltip', title='scott.stevens@example.com')
-                    span.visible-xs
-                      span.text-muted scott.stevens@example.com
-                      br
-                  .clearfix
- 
+        .col-md-5.toppad.pull-right.col-md-offset-3
+          a(href='/test10') Test Link 
+          a.btn.btn-danger.btn-block(href='/logout') Logout
+          br
+          p.text-info May 05,2014,03:00 pm 
+
            
       // JavaScrip Search Plugin
-      script(src='/myjsfiles/searchable.js')
-    //script(src='//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js')
               
