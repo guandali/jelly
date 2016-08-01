@@ -33,6 +33,11 @@ exports.get_pop_up = function (req, res){
 
 
 };
+exports.gochat = function(req, res){
+    console.log('at users.js gochat');
+    res.render('chatpage');
+
+};
 // The following function allows username_0 to add username_1
 // remove usename_1 from username_0's pendingFriendList and 
 // Move it to friendList

@@ -53,6 +53,7 @@ module.exports = function (app, passport) {
   app.get('/test',users.testui);
   app.get('/test0', users.testone);
   app.get('/test10', users.testten);
+  app.get('/chatpage',users.gochat);
   app.get('/pop-up/:username_0/:request_id', users.get_pop_up);
   // Post authencicate req to /users/session passport.authenticate
   

@@ -13,7 +13,20 @@ var mysql = require('mysql');
 //var cloudinary = require('cloundinary');
 
 var app = express();
+//Add this part for socket integration 
+var server = require('http').createServer(app);
+console.log('----- server -----');
+console.log(JSON.stringify(server));
+console.log('----- io  -----');
+console.log(JSON.stringify(io));
+var io = require('socket.io')(server);
+io.on('connection', function(){
+   console.log('----io.on----');
+   console.log(JSON.stringify(io));
+});
+
 var port = process.env.PORT || 3000;
+var http_port = 20000;
 
 // Connect to mongodb
 var connect = function () {
@@ -44,6 +57,9 @@ require('./config/express')(app, passport);
 
 // Bootstrap routes
 require('./config/routes')(app, passport);
+
+
+
 
 app.listen(port);
 console.log('Express app started on port ' + port);
