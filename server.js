@@ -9,25 +9,25 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('config');
 var mysql = require('mysql');
+var port = process.env.PORT || 3000;
 //var io = require()
 //var cloudinary = require('cloundinary');
 
 var app = express();
 //Add this part for socket integration 
-var server = require('http').createServer(app);
-console.log('----- server -----');
-console.log(JSON.stringify(server));
-console.log('----- io  -----');
-console.log(JSON.stringify(io));
-// Pass a http.Server instance 
-var io = require('socket.io').listen(server);
-io.on('connection', function(){
-   console.log('----io.on----');
-   //console.log(JSON.stringify(io));
-});
+//var server = require('http').createServer(app);
+var server = app.listen(port);
 
-var port = process.env.PORT || 3000;
-var http_port = 20000;
+//console.log(JSON.stringify(io));
+// Pass a http.Server instance 
+ var io = require('socket.io').listen(server);
+// io.on('connection', function(){
+//    console.log('----io.on----');
+//    //console.log(JSON.stringify(io));
+// });
+
+
+
 
 // Connect to mongodb
 var connect = function () {
@@ -55,14 +55,15 @@ require('./config/passport')(passport, config);
 
 // Bootstrap application settings
 require('./config/express')(app, passport);
-
-// Bootstrap routes
-require('./config/routes')(app, passport);
+// Going to pass socket 
+// Bootstrap routes 
+require('./config/routes')(app, passport, io);
+console.log('at server.js   app ::' + JSON.stringify(app));
 
 
 
 
 //app.listen(port);
 //console.log('Express app started on port ' + port);
-server.listen(port);
+//server.listen(port);
 console.log('HTTP server instance started on port ' + port);

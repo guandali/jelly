@@ -7,8 +7,8 @@ var wrap = require('co-express')
 var User = mongoose.model('User')
 // var cloudinary = require().v2;
 
+
 var cloudinary = require('cloudinary');
-//console.log('@users.js   __dirname'+__dirname);
 
 
 exports.login = function (req, res) {
@@ -23,12 +23,6 @@ exports.get_pop_up = function (req, res){
    var friend_req_info = {'username':req.params.username_0,
                           'user_id': req.params.request_id
                          };
-   //console.log('typeof  req.params is ' +  typeof req.params.req_msg);
-   //var friend_req_info =  JSON.parse(req.params);
-   //console.log('friend_req_info  (After parsed )  :' +friend_req_info + ' typeof is :' + typeof friend_req_info);
-   //console.log('req.params  is ' + req.params.req_msg._id);
-   //console.log('user_1_name' + JSON.stringify(user_1_name) );
-   //console.log('req.params :::'    + JSON.stringify(req.params));
     res.render('pop-up', {friend_req_info : friend_req_info });
 
 

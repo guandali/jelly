@@ -34,17 +34,16 @@ cloudinary.config({
  * Expose
  */
 
-module.exports = function (app, passport) {
+module.exports = function (app, passport, io) {
+  //Set socket on 
+  io.on('connection', function(socket){
+   console.log('----a user connected----');
+   socket.on('chat message', function (msg) {
+       io.emit('chat message', msg);
+   });
+  });
 
 
-  //console.log('WHAT APP IS   ?:'+app);
-  
-
-
-
-  // cloudinary.uploader.upload("", function(result) { 
-  // console.log(result) 
-  // });
 
   app.get('/', home.index);
   app.get('/login',users.login);
