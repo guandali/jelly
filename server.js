@@ -19,10 +19,11 @@ console.log('----- server -----');
 console.log(JSON.stringify(server));
 console.log('----- io  -----');
 console.log(JSON.stringify(io));
-var io = require('socket.io')(server);
+// Pass a http.Server instance 
+var io = require('socket.io').listen(server);
 io.on('connection', function(){
    console.log('----io.on----');
-   console.log(JSON.stringify(io));
+   //console.log(JSON.stringify(io));
 });
 
 var port = process.env.PORT || 3000;
@@ -61,5 +62,7 @@ require('./config/routes')(app, passport);
 
 
 
-app.listen(port);
-console.log('Express app started on port ' + port);
+//app.listen(port);
+//console.log('Express app started on port ' + port);
+server.listen(port);
+console.log('HTTP server instance started on port ' + port);
