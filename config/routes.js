@@ -38,6 +38,10 @@ module.exports = function (app, passport, io) {
   //Set socket on 
   io.on('connection', function(socket){
    console.log('----a user connected----');
+   io.of('/').clients(function (err, clients) {
+     if (err) throw err;
+     console.log('Namespace#clients' + clients); 
+   });
    socket.on('chat message', function (msg) {
        io.emit('chat message', msg);
    });

@@ -25,6 +25,7 @@ html
       $('#m').val('');
       return false;
       });
+      console.log(JSON.stringify(socket.request));
       socket.on('chat message', function(msg){
       $('#messages').append($('<li>').text(msg));
       });
