@@ -18,13 +18,12 @@ var app = express();
 //var server = require('http').createServer(app);
 var server = app.listen(port);
 
-//console.log(JSON.stringify(io));
-// Pass a http.Server instance 
+
+// Pass a http.Server instance
+// when the server is instantiated, a listener is opend for  
+
  var io = require('socket.io').listen(server);
-// io.on('connection', function(){
-//    console.log('----io.on----');
-//    //console.log(JSON.stringify(io));
-// });
+
 
 
 

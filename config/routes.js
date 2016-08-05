@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var home = require('home');
 var users = require('users');
 var multer = require('multer');
+var sockets = require('sockets');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/uploads/');
@@ -35,20 +36,31 @@ cloudinary.config({
  */
 
 module.exports = function (app, passport, io) {
+  var chat_flag = 0;
+  
   //Set socket on 
-  io.on('connection', function(socket){
-   console.log('----a user connected----');
-   io.of('/').clients(function (err, clients) {
-     if (err) throw err;
-     console.log('Namespace#clients' + clients); 
-   });
-   socket.on('chat message', function (msg) {
-       io.emit('chat message', msg);
-   });
-  });
+  // io.on('connection', function(socket){
+  //   //console.log('io.sockets  ----' + JSON.stringify(io.sockets));
+  // //  console.log('----a user connected----');
+  // if (chat_flag = 0 ){
+  //     console.log('First user connected');
 
+  // }
+  //  io.of('/').clients(function (err, clients) {
+  //    if (err) throw err;
+  //    console.log('Namespace#clients' + clients); 
+  //  });
+  //  socket.on('chat message', function (msg) {
+  //      io.emit('chat message', msg);
+  //  });
+  // });
 
-
+  var chat = io 
+     .of('/')
+     .on('connection', function (socket) {
+       sockets.response(chat, socket);
+     });
+  // io.sockets.on('connection', sockets.reponse);
   app.get('/', home.index);
   app.get('/login',users.login);
   app.get('/signup',users.signup);
