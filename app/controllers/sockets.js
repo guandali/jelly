@@ -14,6 +14,8 @@ module.exports.response__notused = function ( endpoint,socket_io) {
 module.exports.response_used = function ( endpoint, socket_io) {
      console.log('@ sockets.js response__used()');
      socket_io.on('subscribe', function(room) { 
+        console.log('-----------');
+        console.log(socket_io.request);
         console.log('joining room', room);
         socket_io.join(room); 
     })

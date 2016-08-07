@@ -31,7 +31,9 @@ exports.gochat = function(req, res){
     console.log('session info ');
     console.log('session info ');
     console.log('session info ');
-    console.log(JSON.stringify(req.session));
+    console.log('-------' + JSON.stringify(req.session));
+    console.log('req.cookies??');
+    console.log(JSON.stringify(req.cookies));
     console.log('at users.js gochat');
     res.render('chatpage');
 
