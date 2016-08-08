@@ -3,11 +3,11 @@
 ## Jelly-Chat
 
 A real-time chat app using express, mongoose and passport and socket.io.
+#Update: Currently working private chatroom
 
-Read the [wiki](https://github.com/madhums/node-express-mongoose/wiki) to understand how the application is structured.
 
 
-Checkout the [Dipoyed to ](https://github.com/madhums/node-express-mongoose/wiki/Apps-built-using-this-approach)
+Reference: Used  [boilerplate](https://github.com/madhums/node-express-mongoose)
 
 
 MIT
