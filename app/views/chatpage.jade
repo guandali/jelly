@@ -12,7 +12,7 @@ html
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
   body
-     l #{req.user.username}
+     l #{uname}
       ul#messages
       form(action='')
         input#m(autocomplete='off')
@@ -20,6 +20,6 @@ html
       script(src='https://cdn.socket.io/socket.io-1.2.0.js')
       script(src='http://code.jquery.com/jquery-1.11.1.js')
       script(src='/js/chat.js')
-      script. 
-         var current_username = req.user.username;
-         console.log('check value' + req.user.username);
+      script.
+         var new_uname = #{uname};
+        

@@ -1,9 +1,7 @@
-doctype html
-//script(type='text/javascript', src='/myjsfiles/searchable.js')
 
-html
-  header
-     include ./Flat/navbar.jade
+
+include ./home/mixins
+include ./Flat/navbar.jade
 body 
     .container
       .row
@@ -22,6 +20,7 @@ body
                       span.name #{display_item.username}
                       a.btn.btn-link( href='/chatpage') Link
                       br
+
                       span.text  Friend since #{display_item.date}
                       br
                     .clearfix
@@ -81,5 +80,5 @@ body
           p.text-info May 05,2014,03:00 pm 
 
            
-      // JavaScrip Search Plugin
+ 
               

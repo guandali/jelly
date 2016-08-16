@@ -1,21 +1,24 @@
 // This is controller for socktets 
 
-module.exports.response__notused = function ( endpoint,socket_io) {
+module.exports.response = function ( endpoint,socket_io) {
    //console.log(JSON.stringify(socket_io));
    console.log('@ sockets.js reponse()');
-   socket_io.on('chat message', function (msg) {
-       endpoint.emit('chat message', msg);
+   socket_io.on('msg->endpoint', function (msg) {
+       endpoint.emit('msg->client', msg);
       console.log('msg ::' + msg);
+   });
+   socket_io.on('uname', function (msg) {
+       console.log('Print uname ::' + JSON.stringify(msg));
    });
  
 };
 
 
-module.exports.response_used = function ( endpoint, socket_io) {
+module.exports.response_notused = function ( endpoint, socket_io) {
      console.log('@ sockets.js response__used()');
      socket_io.on('subscribe', function(room) { 
         console.log('-----------');
-        console.log(socket_io.request);
+       // console.log(socket_io.request);
         console.log('joining room', room);
         socket_io.join(room); 
     })

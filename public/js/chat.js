@@ -1,11 +1,13 @@
       var socket = io();
-      socket.emit('subscribe', 'roomOne');
-      console.log($("#" + current_username));
+      var uname = $("input[name=" + name + "]").val();
+      if (uname){
+            socket.emit('uname', uname);
+      }
       $('form').submit(function(){
-      socket.emit('server<-pcmsg', $('#m').val());
+      socket.emit('msg->endpoint', $('#m').val());
       $('#m').val('');
       return false;
       });
-      socket.on('pcmsg->client', function(msg){
+      socket.on('msg->client', function(msg){
       $('#messages').append($('<li>').text(msg));
       });

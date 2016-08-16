@@ -68,13 +68,6 @@ html(lang='en')
                    p.navbar-text.navbar-right
                      | Signed in as 
                      a.navbar-link(href='/users/'+ req.user.username) #{req.user.username}
-             //-   if (req.isAuthenticated())
-             //-    li.dropdown  
-             //-     #bs-example-navbar-collapse-17.collapse.navbar-collapse
-             //-      p.navbar-text.navbar-right
-             //-        | Signed in as
-             //-        a.navbar-link(href= '/users/'+ req.user.username)
-             //-          strong  #{req.user.username}
 
                 
     .row
@@ -100,7 +93,7 @@ html(lang='en')
 
          
     // jQuery (necessary for Bootstrap's JavaScript plugins)
-    script(src='./Flat-UI/dist/js/vendor/jquery.min.js')
+    script(src='/Flat-UI/dist/js/vendor/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
-    script(src='./Flat-UI/dist/js/flat-ui.min.js')
-    script(src='./Flat-UI/assets/js/application.js')
+    script(src='/Flat-UI/dist/js/flat-ui.min.js')
+    script(src='/Flat-UI/assets/js/application.js')

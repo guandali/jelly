@@ -58,7 +58,7 @@ module.exports = function (app, passport, io) {
   var chat = io 
      .of('/')
      .on('connection', function (socket) {
-       sockets.response_used(chat, socket);
+       sockets.response(chat, socket);
      });
   //io.sockets.on('connection', sockets.response__used );// response__used 
   app.get('/', home.index);
