@@ -1,9 +1,42 @@
 include ./home/mixins
 include ./Flat/navbar.jade
-body
-      form(name='uploadprofile', action='/uploadprofile', method='POST', enctype='multipart/form-data', id="my-awesome-dropzone")
-        li
-        input(type='file', name='profile_photo', value= '', required)
+header
+   style. 
+          /* layout.css Style */
+          .upload-drop-zone {
+            height: 200px;
+            border-width: 2px;
+            margin-bottom: 20px;
+          }
 
-        button(type='submit', name='submit_button') Yes, Upload as my profile
-script(src='/js/dropzone.js')
+          /* skin.css Style*/
+          .upload-drop-zone {
+            color: #ccc;
+            border-style: dashed;
+            border-color: #ccc;
+            line-height: 200px;
+            text-align: center
+          }
+          .upload-drop-zone.drop {
+            color: #222;
+            border-color: #222;
+          }
+
+
+body
+ .container
+      .panel.panel-default
+        .panel-heading
+          strong Upload Files
+          small 
+        .panel-body
+          // Standar Form
+          h4 Select photo from your computer
+          form#js-upload-form(action='/uploadprofile', method='post', enctype='multipart/form-data')
+           #dropzonePreview
+            .form-inline
+              .form-group
+                input#js-upload-files(type='file', name='profile_photo', value= '', required)
+              button#js-upload-submit.btn.btn-sm.btn-primary(type='submit') Upload files
+
+script(src='/js/my_dropzone.js')
