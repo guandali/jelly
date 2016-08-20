@@ -258,15 +258,7 @@ exports.signup = function(req, res){
     });
     
 };
-exports.testten = wrap(function* (req, res){
-    console.log();
-    console.log();
-    console.log();
-    console.log('@ users @ testten');
-    test15();
-    console.log('Back to testten now');
-    
-});
+
 function sendRequest(username_0, username_1){
    
     console.log('sendRequest' + JSON.stringify(username_0));
@@ -360,7 +352,7 @@ exports.uploadPhoto = wrap(function* (req, res, next){
      });
 
 });
-exports.loadUser = wrap (function*(req, res, next, username ){
+exports.loadUser = wrap (function* (req, res, next, username ){
     const criteria = {username: username};
     console.log('username is at users.loadUser :: ' + username);
     User.findOne(criteria, function(err, result_user){
