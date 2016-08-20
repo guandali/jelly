@@ -43,7 +43,7 @@ const UserSchema = new Schema({
   hashed_password: { type: String, default: '' },
   salt: { type: String, default: '' }
 });
-const validatePresenceOf = value => value && value.length;
+//const validatePresenceOf = value => value && value.length;
 
 
 UserSchema
