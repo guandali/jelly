@@ -383,7 +383,7 @@ exports.createuser = wrap (function (req, res) {
      console.log(JSON.stringify(result_user))
    });
    
-       req.logIn(user, err => {
+       req.logIn(user, function (err){
         if (err)
             req.flash('info', 'Sorry! We are not able to log you in!');
         return res.redirect('/');
