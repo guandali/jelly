@@ -1,5 +1,5 @@
 {
-  "name": "node-express-mongoose",
+  "name": "jellyChat",
   "description": "A boilerplate application for express mongoose",
   "version": "1.0.0",
   "author": {
@@ -50,7 +50,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/madhums/node-express-mongoose.git"
+    "url": "git://github.com/larryliUbc/jelly.git"
   },
   "keywords": [
     "mvc",
