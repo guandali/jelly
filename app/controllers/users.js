@@ -296,20 +296,20 @@ function sendRequest(username_0, username_1){
 
 
 
-exports.logout = wrap ( function* (req, res){
+exports.logout = wrap ( function (req, res){
     console.log('@users.js:: users.logout');
     req.logout();
     res.redirect('/');
 
 });
 
-exports.getUpload = wrap( function* (req, res){
+exports.getUpload =  function (req, res){
     res.render('uploadprofile',{title: 'Upload new profile photo'});
      
 
 
-});
-exports.displayUser = wrap( function* (req, res, next){
+};
+exports.displayUser = function(req, res, next){
     if (!req.isAuthenticated()) {
       //console.log('@displayUser  @users.js ::' +'PLZ LOGIN');
       res.redirect('/login');
@@ -335,8 +335,8 @@ exports.displayUser = wrap( function* (req, res, next){
         //console.log();
         //console.log(JSON.stringify(another_user_profile));
 
-});
-exports.uploadPhoto = wrap(function* (req, res, next){
+};
+exports.uploadPhoto = function(req, res, next){
      console.log('@ users.uploadPhoto');
 
      cloudinary.uploader.upload(req.file.path, function(result) { 
@@ -351,8 +351,8 @@ exports.uploadPhoto = wrap(function* (req, res, next){
        });
      });
 
-});
-exports.loadUser = wrap (function* (req, res, next, username ){
+};
+exports.loadUser = function (req, res, next, username ){
     const criteria = {username: username};
     console.log('username is at users.loadUser :: ' + username);
     User.findOne(criteria, function(err, result_user){
@@ -366,16 +366,16 @@ exports.loadUser = wrap (function* (req, res, next, username ){
         
 
     });
-});
+};
 
 
 
-exports.createuser = wrap (function* (req, res) {
+exports.createuser = function(req, res) {
   console.log('users.ts ::==> createuser')
    console.log('req.body.unhashed_passowrd is'+ JSON.stringify(req.body.unhashed_password))
    const user = new User(req.body)
    user.provider = 'local';
-   yield user.save()
+    user.save()
    console.log(JSON.stringify(user))
    console.log('Try to find this user from db');
    console.log('Now user._id ::'+ user._id)
@@ -389,4 +389,4 @@ exports.createuser = wrap (function* (req, res) {
         return res.redirect('/');
     });
   
-});
+};
