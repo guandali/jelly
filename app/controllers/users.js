@@ -370,7 +370,7 @@ exports.loadUser = function (req, res, next, username ){
 
 
 
-exports.createuser = function(req, res) {
+exports.createuser = wrap (function(req, res) {
   console.log('users.ts ::==> createuser')
    console.log('req.body.unhashed_passowrd is'+ JSON.stringify(req.body.unhashed_password))
    const user = new User(req.body)
@@ -389,4 +389,4 @@ exports.createuser = function(req, res) {
         return res.redirect('/');
     });
   
-};
+});
