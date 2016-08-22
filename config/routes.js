@@ -6,6 +6,7 @@
 var mongoose = require('mongoose');
 var home = require('home');
 var users = require('users');
+var account = require('account');
 var multer = require('multer');
 var sockets = require('sockets');
 var storage = multer.diskStorage({
@@ -69,6 +70,17 @@ module.exports = function (app, passport, io) {
   app.get('/test0', users.testone);
   app.get('/chatpage',users.gochat);
   app.get('/pop-up/:username_0/:request_id', users.get_pop_up);
+  // The following is account routing 
+  // update account
+    // route to upload user's profile photo
+   app.get('/account/uploadprofile',account.getUpload);
+   app.post('/account/uploadprofile',upload.single('profile_photo'),account.uploadPhoto);
+   // account getUpdate and account update 
+   app.get('/account/getUpdate', account.getUpdate);
+   app.post('/account/updateProfile', account.updateProfile);
+  
+
+
   // Post authencicate req to /users/session passport.authenticate
   
   app.post('/users/session', passport.authenticate
@@ -100,9 +112,7 @@ module.exports = function (app, passport, io) {
   app.post('/users/acceptfriend/:accept_user_id',users.acceptfriend);
   app.post('/users/:username_0/addfriend/:username_1', users.addfriend);
   app.get('/logout', users.logout);
-  // route to upload user's profile photo
-  app.get('/uploadprofile',users.getUpload);
-  app.post('/uploadprofile',upload.single('profile_photo'),users.uploadPhoto);
+
   //NEXT SECTION IS FOR TESTING
   app.get('/searchbar', home.search);
   app.post('/searchresults', users.get_search_results);

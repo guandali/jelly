@@ -2,6 +2,16 @@
 
 include ./home/mixins
 include ./Flat/navbar.jade
+header
+    link(href='/Flat-UI/dist/css/vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // Loading Flat UI
+    link(href='/Flat-UI/dist/css/flat-ui.css', rel='stylesheet')
+    link(href='/Flat-UI/docs/assets/css/demo.css', rel='stylesheet')
+    link(rel='shortcut icon', href='img/favicon.ico')
+    // HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file.
+    //if lt IE 9
+      script(src='dist/js/vendor/html5shiv.js')
+      script(src='dist/js/vendor/respond.min.js')
 body 
     .container
       .row
@@ -33,7 +43,7 @@ body
             .panel-body
               .row
                 .col-md-3.col-lg-3(align='center')
-                  a(href='/uploadprofile')  
+                  a(href='/account/uploadprofile')  
                     img.img-circle.img-responsive(src="#{user.user_profile_photo}", width='200', height='200', class= 'thumbnail')
                 .col-md-9.col-lg-9
                   table.table.table-user-information
@@ -68,8 +78,8 @@ body
               a.btn.btn-sm.btn-primary(data-original-title='Broadcast Message', data-toggle='tooltip', type='button')
                 i.glyphicon.glyphicon-envelope
               span.pull-right
-                a.btn.btn-sm.btn-warning(href='edit.html', data-original-title='Edit this user', data-toggle='tooltip', type='button')
-                  i.glyphicon.glyphicon-edit
+                a.button.btn.btn-default.btn-sm(href='/updateinfo', data-original-title='Edit this user', data-toggle='tooltip', type='button')
+                  i.glyphicon.glyphicon-edit update 
                 a.btn.btn-sm.btn-danger(data-original-title='Remove this user', data-toggle='tooltip', type='button')
                   i.glyphicon.glyphicon-remove
              a#back-to-bootsnipp.btn.btn-danger.hide(href='http://bootsnipp.com/mouse0270/snippets/4l0k2') Back to Bootsnipp

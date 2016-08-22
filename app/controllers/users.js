@@ -303,12 +303,7 @@ exports.logout = wrap ( function (req, res){
 
 });
 
-exports.getUpload =  function (req, res){
-    res.render('uploadprofile',{title: 'Upload new profile photo'});
-     
 
-
-};
 exports.displayUser = function(req, res, next){
     if (!req.isAuthenticated()) {
       //console.log('@displayUser  @users.js ::' +'PLZ LOGIN');
@@ -336,22 +331,7 @@ exports.displayUser = function(req, res, next){
         //console.log(JSON.stringify(another_user_profile));
 
 };
-exports.uploadPhoto = function(req, res, next){
-     console.log('@ users.uploadPhoto');
 
-     cloudinary.uploader.upload(req.file.path, function(result) { 
-       var new_profile_URL = result.secure_url;
-       console.log('new_profile_URL    ::'+new_profile_URL);
-
-       console.log('_user_id     :'+req.user._id);
-       User.findByIdAndUpdate(req.user._id, { $set: {user_profile_photo:new_profile_URL}}, function(err, result_user){
-           console.log('AFTER UPDATE::'+result_user.user_profile_photo);
-           res.redirect('/users/'+result_user.username);
-
-       });
-     });
-
-};
 exports.loadUser = function (req, res, next, username ){
     const criteria = {username: username};
     console.log('username is at users.loadUser :: ' + username);
