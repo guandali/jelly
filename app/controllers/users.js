@@ -178,23 +178,14 @@ exports.testone = function(req, res){
 //      console.log(JSON.stringify(req.params));
 
 // });
-exports.addfriend =  function(req, res){
+exports.addfriend =  function(req, res,next){
 
    console.log('@ addfriend  @ users.js');
-   //console.log('user_1_name' + JSON.stringify(user_1_name) );
-   console.log('req.body :::'    + JSON.stringify(req.params));
-   console.log('req.user :::'    + JSON.stringify(req.user));
-   // addfriend(user_0_name, user_1_name) user_0 is whoever make request, user_1 is who are going to accept request 
-
-
-//    User.addfriend();
- // Following line is disbaled 
-    req.user.pendingFriendList.push({userName: req.params.username_1});
-    req.user.save();
-   // Send Request
-   
+   req.user.pendingFriendList.push({userName: req.params.username_1});
+   req.user.save();
    sendRequest(req.params.username_0,req.params.username_1);
-   console.log('req.user.pendingFriendList :::'    + JSON.stringify(req.user.pendingFriendList));
+   console.log('refresh page ');
+   res.redirect('/');
 
 
 };

@@ -67,11 +67,11 @@ html(lang='en')
                    a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
                       i.fa.fa-fw.fa-bell-o
                       |  Message 
-                    if (req.user.awaitingFridendList.length != 0)
+
                       span.badge #{req.user.awaitingFridendList.length}
                     ul.dropdown-menu(role='menu')
                     each req_msg in req.user.awaitingFridendList
-                      li
+                       li
                         a.view-pdf(href='/pop-up/'+ req_msg.userName +'/' + req_msg._id)
                           i.fa.fa-fw.fa-tag
                           span.badge #{req_msg.userName}
