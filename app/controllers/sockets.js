@@ -1,8 +1,13 @@
 // This is controller for socktets 
+var users_list = []
 
 module.exports.response = function ( endpoint,socket_io) {
    //console.log(JSON.stringify(socket_io));
    console.log('@ sockets.js reponse()');
+   socket_io.on('user enter', function (msg) {
+       console.log('user enter' + msg);
+       
+   })
    socket_io.on('msg->endpoint', function (msg) {
        endpoint.emit('msg->client', msg);
       console.log('msg ::' + msg);
@@ -12,6 +17,16 @@ module.exports.response = function ( endpoint,socket_io) {
    });
  
 };
+
+exports.gochat = function (req, res ){
+    //console.log('session ' + JSON.stringify(req.session));
+    //console.log('session ' + JSON.stringify(req.user));
+    res.render('chatpage', {uname:req.user.username});
+   
+
+}
+
+
 
 
 module.exports.response_notused = function ( endpoint, socket_io) {

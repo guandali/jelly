@@ -68,7 +68,9 @@ module.exports = function (app, passport, io) {
   app.post('/signup', users.createuser);
   app.get('/test',users.testui);
   app.get('/test0', users.testone);
-  app.get('/chatpage',users.gochat);
+  //sockets route 
+  app.get('/chatpage', sockets.gochat);
+ // app.get('/chatpage',users.gochat);
   app.get('/pop-up/:username_0/:request_id', users.get_pop_up);
   // The following is account routing 
   // update account

@@ -27,6 +27,7 @@ exports.get_pop_up = function (req, res){
 
 
 };
+// This part not in use 
 exports.gochat = function(req, res){
     // console.log('session info ');
     // console.log('session info ');
@@ -35,7 +36,8 @@ exports.gochat = function(req, res){
     // console.log('req.cookies??');
     // console.log(JSON.stringify(req.cookies));
     // console.log('at users.js gochat');
-    res.render('chatpage', {uname:req.user.username});
+    console.log('at gochat :: ' + typeof req.user.username);
+    res.render('chatpage', {'uname':req.user.username});
 
 };
 // The following function allows username_0 to add username_1

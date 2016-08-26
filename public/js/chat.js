@@ -1,8 +1,8 @@
+$(window).load(function(){
       var socket = io();
-      var uname = $("input[name=" + name + "]").val();
-      if (uname){
-            socket.emit('uname', uname);
-      }
+      alert('#{uname}');
+      socket.emit('user enter ', new_uname);
+       
       $('form').submit(function(){
       socket.emit('msg->endpoint', $('#m').val());
       $('#m').val('');
@@ -11,3 +11,4 @@
       socket.on('msg->client', function(msg){
       $('#messages').append($('<li>').text(msg));
       });
+});

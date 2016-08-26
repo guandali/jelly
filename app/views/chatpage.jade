@@ -13,6 +13,8 @@ html
       #messages li:nth-child(odd) { background: #eee; }
   body
      l #{uname}
+     ul 
+      | document.getElementById("insert").innerHTML = uname;
       ul#messages
       form(action='')
         input#m(autocomplete='off')
@@ -22,4 +24,5 @@ html
       script(src='/js/chat.js')
       script.
          var new_uname = #{uname};
+         alert('uname type is ' + typeof uname); 
         
