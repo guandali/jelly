@@ -1,28 +1,33 @@
 doctype html
 html
   head
-    title Socket.IO chat
-    style.
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+    meta(charset='utf-8')
+    title ChatRoom
+    script(type='text/javascript', src='js/jquery.min.js')
+    script(type='text/javascript', src='js/jquery.cookie.js')
+    script(src='https://cdn.socket.io/socket.io-1.2.0.js')
+    script(src='/js/chat.js')
+    link(type='text/css', rel='stylesheet', href='stylesheets/common.css')
+    link(type='text/css', rel='stylesheet', href='stylesheets/chat.css')
   body
-     l #{uname}
-     ul 
-      | document.getElementById("insert").innerHTML = uname;
-      ul#messages
-      form(action='')
-        input#m(autocomplete='off')
-        button Send
-      script(src='https://cdn.socket.io/socket.io-1.2.0.js')
-      script(src='http://code.jquery.com/jquery-1.11.1.js')
-      script(src='/js/chat.js')
-      script.
-         var new_uname = #{uname};
-         alert('uname type is ' + typeof uname); 
+    #contain
+      #content
+        #content_show
+          #contents
+        #content_saying
+          #toolbar
+          #input_content(contenteditable='true')
+          #sayingto
+            | Hello
+            span#from
+            |  ，you are speaking to
+            span#to
+            |  说
+          #say Send
+      #users_online
+        #usersbar
+          #user_label Online Clients
+          #users_list
+            ul#list
+
         

@@ -4,15 +4,19 @@ var users_list = []
 module.exports.response = function ( endpoint,socket_io) {
    //console.log(JSON.stringify(socket_io));
    console.log('@ sockets.js reponse()');
+   socket_io.on('connection', function(client){
+      console.log('At connection');
+      console.log('client' + JSON.stringify(client) );
+   });
    socket_io.on('user enter', function (msg) {
-       console.log('user enter' + msg);
+       console.log('user enter' + JSON.stringify(msg));
        
    })
    socket_io.on('msg->endpoint', function (msg) {
        endpoint.emit('msg->client', msg);
       console.log('msg ::' + msg);
    });
-   socket_io.on('uname', function (msg) {
+   socket_io.on('username', function (msg) {
        console.log('Print uname ::' + JSON.stringify(msg));
    });
  
@@ -21,7 +25,8 @@ module.exports.response = function ( endpoint,socket_io) {
 exports.gochat = function (req, res ){
     //console.log('session ' + JSON.stringify(req.session));
     //console.log('session ' + JSON.stringify(req.user));
-    res.render('chatpage', {uname:req.user.username});
+    console.log('JSON.stringify(client)  :: ' + JSON.stringify(res.cookies));
+    res.render('chatpage', {'uname':req.user.username});
    
 
 }
