@@ -59,7 +59,7 @@ module.exports = function (app, passport, io) {
   var chat = io 
      .of('/')
      .on('connection', function (socket) {
-       sockets.response(chat, socket);
+       sockets.response(chat, socket, users.online_users);
      });
   //io.sockets.on('connection', sockets.response__used );// response__used 
   app.get('/', home.index);
@@ -76,7 +76,7 @@ module.exports = function (app, passport, io) {
   // update account
     // route to upload user's profile photo
    app.get('/account/uploadprofile',account.getUpload);
-   app.post('/account/uploadprofile',upload.single('profile_photo'),account.uploadPhoto);
+   app.post('/account /uploadprofile',upload.single('profile_photo'),account.uploadPhoto);
    // account getUpdate and account update 
    app.get('/account/getUpdate', account.getUpdate);
    app.post('/account/updateProfile', account.updateProfile);

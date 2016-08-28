@@ -8,7 +8,7 @@ var User = mongoose.model('User')
 // var cloudinary = require().v2;
 
 var online_users = {} // Store all online users
-
+module.exports.online_users = online_users;
 
 var cloudinary = require('cloudinary');
 
@@ -242,7 +242,7 @@ function login(req, res) {
     console.log('users.session at users.js');
     console.log('req.body.username  :::: '+ req.body.username);
     res.cookie("user", req.body.username, {maxAge: 1000*60*24*30});
-    console.log('online_users' + online_users);
+    console.log('online_users' + JSON.stringify(online_users));
     res.redirect('/users/'+ req.body.username);
 }
 

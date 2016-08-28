@@ -1,15 +1,23 @@
 // This is controller for socktets 
 var users_list = []
 
-module.exports.response = function ( endpoint,socket_io) {
+
+module.exports.response = function ( endpoint,socket_io, online_users) {
+    console.log('online_users' + JSON.stringify(online_users));
    //console.log(JSON.stringify(socket_io));
    console.log('@ sockets.js reponse()');
-   socket_io.on('connection', function(client){
-      console.log('At connection');
-      console.log('client' + JSON.stringify(client) );
-   });
-   socket_io.on('user enter', function (msg) {
-       console.log('user enter' + JSON.stringify(msg));
+
+   socket_io.on('online-->server', function (data) {
+       socket_io.name = data.user;
+       console.log('socket_io.name  :' + socket_io.name);
+
+       if (!online_users[data.user]){
+           online_users[data.user] = data.user;
+           console.log('online_users :' + JSON.stringify(online_users));
+
+       }
+       endpoint.emit('online-->client', {users:online_users, user: data.user});
+
        
    })
    socket_io.on('msg->endpoint', function (msg) {
@@ -25,7 +33,8 @@ module.exports.response = function ( endpoint,socket_io) {
 exports.gochat = function (req, res ){
     //console.log('session ' + JSON.stringify(req.session));
     //console.log('session ' + JSON.stringify(req.user));
-    console.log('JSON.stringify(client)  :: ' + JSON.stringify(res.cookies));
+   // var result = req.cookie('user');
+    //console.log('JSON.stringify(client)  :: ' + JSON.stringify(result));
     res.render('chatpage', {'uname':req.user.username});
    
 
