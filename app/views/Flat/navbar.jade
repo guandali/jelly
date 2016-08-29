@@ -50,13 +50,14 @@ html(lang='en')
                    li
                      a(href='#fakelink') Account
                  // /Sub menu
-               li.dropdown
+               if (req.isAuthenticated())
+                li.dropdown
                  a.dropdown-toggle(href='#fakelink', data-toggle='dropdown')
-                   | Promo Setup
+                   | Dashboard
                    span.caret
                  ul.dropdown-menu
                    li
-                     a(href='#fakelink') View Promo List
+                     a(href='/chatpage') Chat room 
                    li
                      a(href='#fakelink') Add Edit Promo
                    li
