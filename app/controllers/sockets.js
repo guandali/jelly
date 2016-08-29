@@ -18,6 +18,22 @@ module.exports.response = function ( endpoint,socket_io, online_users) {
        }
        endpoint.emit('online-->client', {users:online_users, user: data.user});
 
+       socket_io.on('online-->server:say', function(data){
+           // if to everyone, just broadcast to all  
+           if (data.to == 'all'){
+               socket_io.broadcast.emit('say', data);
+           } else {
+               // find the user matches up 
+               var clients = endpoint.sockets.client();
+               clients.forEach(function(client) {
+                if (client.name == data.to){
+                    client.emit('say', data);
+                }   
+               });
+           }
+           
+       });
+
        
    })
    socket_io.on('msg->endpoint', function (msg) {
