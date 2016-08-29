@@ -2,7 +2,7 @@
 var users_list = []
 
 
-module.exports.response = function ( endpoint,socket_io, online_users) {
+module.exports.response = function ( endpoint,socket_io, online_users, io) {
     console.log('online_users' + JSON.stringify(online_users));
    //console.log(JSON.stringify(socket_io));
    console.log('@ sockets.js reponse()');
@@ -19,12 +19,14 @@ module.exports.response = function ( endpoint,socket_io, online_users) {
        endpoint.emit('online-->client', {users:online_users, user: data.user});
 
        socket_io.on('online-->server:say', function(data){
-           // if to everyone, just broadcast to all  
+           // if to everyone, just broadcast to all 
+           console.log('online-->server:say' + JSON.stringify(data)); 
            if (data.to == 'all'){
                socket_io.broadcast.emit('say', data);
            } else {
                // find the user matches up 
-               var clients = endpoint.sockets.client();
+               var clients = endpoint.sockets.clients();
+               console.log('socket_io.sockets.client()   ' + JSON.stringify(clients));
                clients.forEach(function(client) {
                 if (client.name == data.to){
                     client.emit('say', data);
