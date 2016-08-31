@@ -31,13 +31,6 @@ exports.get_pop_up = function (req, res){
 };
 // This part not in use 
 exports.gochat = function(req, res){
-    // console.log('session info ');
-    // console.log('session info ');
-    // console.log('session info ');
-    // console.log('-------' + JSON.stringify(req.session));
-    // console.log('req.cookies??');
-    // console.log(JSON.stringify(req.cookies));
-    // console.log('at users.js gochat');
     console.log('at gochat :: ' + typeof req.user.username);
     res.render('chatpage', {'uname':req.user.username});
 

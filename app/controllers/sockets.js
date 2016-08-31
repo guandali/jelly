@@ -10,10 +10,14 @@ module.exports.response = function ( endpoint,socket_io, online_users, io) {
    socket_io.on('online-->server', function (data) {
        socket_io.name = data.user;
        console.log('socket_io.name  :' + socket_io.name);
-
+       console.log('online_users :' + JSON.stringify(online_users));
+       //check user if is offline
+       if (!data.user){
+          console.log('offline');
+       }
        if (!online_users[data.user]){
            online_users[data.user] = data.user;
-           console.log('online_users :' + JSON.stringify(online_users));
+          
 
        }
        endpoint.emit('online-->client', {users:online_users, user: data.user});
@@ -52,7 +56,10 @@ exports.gochat = function (req, res ){
     //console.log('session ' + JSON.stringify(req.session));
     //console.log('session ' + JSON.stringify(req.user));
    // var result = req.cookie('user');
-    //console.log('JSON.stringify(client)  :: ' + JSON.stringify(result));
+    console.log('JSON.stringify(req.user)  :: ' + JSON.stringify(req.user));
+    if (req.user ===  null ){
+        console.log('its null');
+    }
     res.render('chatpage', {'uname':req.user.username});
    
 
