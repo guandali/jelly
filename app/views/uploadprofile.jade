@@ -1,7 +1,12 @@
 include ./home/mixins
 include ./Flat/navbar.jade
 header
-   style. 
+    link(href='/Flat-UI/dist/css/vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // Loading Flat UI
+    link(href='/Flat-UI/dist/css/flat-ui.css', rel='stylesheet')
+    link(href='/Flat-UI/docs/assets/css/demo.css', rel='stylesheet')
+    link(rel='shortcut icon', href='img/favicon.ico')
+    style. 
           /* layout.css Style */
           .upload-drop-zone {
             height: 200px;

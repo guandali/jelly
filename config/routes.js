@@ -38,23 +38,6 @@ cloudinary.config({
 
 module.exports = function (app, passport, io) {
   var chat_flag = 0;
-  
-  //Set socket on 
-  // io.on('connection', function(socket){
-  //   //console.log('io.sockets  ----' + JSON.stringify(io.sockets));
-  // //  console.log('----a user connected----');
-  // if (chat_flag = 0 ){
-  //     console.log('First user connected');
-
-  // }
-  //  io.of('/').clients(function (err, clients) {
-  //    if (err) throw err;
-  //    console.log('Namespace#clients' + clients); 
-  //  });
-  //  socket.on('chat message', function (msg) {
-  //      io.emit('chat message', msg);
-  //  });
-  // });
 
   var chat = io 
      .of('/')
@@ -100,6 +83,9 @@ module.exports = function (app, passport, io) {
   //   console.log('typeof req.user is ' + typeof req.user);
   //   next();
   // });
+   app.param('refuse_user_id',function(req, res, next, id){
+    next();
+   });
 
    app.param('accept_user_id',function(req, res, next, id){
     next();
@@ -112,6 +98,7 @@ module.exports = function (app, passport, io) {
   });
   app.get('/users/:username',users.displayUser );
   app.post('/users/acceptfriend/:accept_user_id',users.acceptfriend);
+  app.post('/users/friendrequests/:refuse_user_id', users.refusefriend);
   app.post('/users/:username_0/addfriend/:username_1', users.addfriend);
   app.get('/logout', users.logout);
 

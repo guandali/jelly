@@ -29,8 +29,9 @@ module.exports.response = function ( endpoint,socket_io, online_users, io) {
                socket_io.broadcast.emit('say', data);
            } else {
                // find the user matches up 
-               var clients = endpoint.sockets.clients();
-               console.log('socket_io.sockets.client()   ' + JSON.stringify(clients));
+               var clients = io.sockets;
+               console.log(' the type of clients   : ' + clients[0] );
+               //console.log('socket_io.sockets.client()   ' + JSON.stringify(clients));
                clients.forEach(function(client) {
                 if (client.name == data.to){
                     client.emit('say', data);

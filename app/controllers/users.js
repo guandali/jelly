@@ -152,7 +152,25 @@ exports.acceptfriend = function(req, res){
 
 
 
+// Reject a friend request 
+exports.refusefriend = function(req, res){
+   console.log("users.js refusefriend method");
+   console.log('req.user.awaitingFridendList  :');
+   console.log(JSON.stringify(req.user.awaitingFridendList));
+   var test_value = req.user.awaitingFridendList.id(req.params.refuse_user_id);
+   console.log('value found  : ' + test_value);
+   if (test_value == -1 )
+      console.log('Error: Cannot find the resuqest');
+   User.findById({_id: req.user._id }, function (err, req_user){
+     req_user.awaitingFridendList.id(req.params.refuse_user_id).remove();
+     req_user.save();
+     res.redirect('/');   
+   });
+   
 
+
+
+}
 
 //  This routing is used to test flat-ui
 exports.testui = function (req, res){
