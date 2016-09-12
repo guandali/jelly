@@ -103,12 +103,8 @@ exports.acceptfriend = function(req, res){
 
                }
             }
-            console.log('***************DEBUG-0*************');
             // If check_id !== undefined
             // Reverse to insert into result_user 
-            console.log('');
-            console.log('');
-            console.log('');
             console.log('Before push: ' +  JSON.stringify(result_user.friendList)); 
             
             result_user.friendList.push({
@@ -118,14 +114,7 @@ exports.acceptfriend = function(req, res){
 
         
                                     });
-            console.log('***************DEBUG-2*************');
-            console.log('');
-            console.log('');
-            console.log('');
             result_user.save();
-            console.log('');
-            console.log('');
-            console.log('');
             console.log('After push: ' +  JSON.stringify(result_user)); 
             console.log('');
             console.log('');
@@ -182,17 +171,7 @@ exports.testone = function(req, res){
   res.render('testone');
 };
 
-// req.user add user 
-// exports.addfriend = wrap (function* (req, res, next, user_1_info){
 
-//      console.log('@ addfriend  @ users.js');
-//      console.log('user_1_info' + user_1_info);
-//      console.log('req  ::');
-//      console.log('req  ::');
-//      console.log('req.parmas  ::');
-//      console.log(JSON.stringify(req.params));
-
-// });
 exports.addfriend =  function(req, res,next){
 
    console.log('@ addfriend  @ users.js');
@@ -212,8 +191,6 @@ exports.addfriend =  function(req, res,next){
 // How I hdndled pending user 
 // Created another array can 
 exports.get_search_results = function(req, res){
-    // console.log('req.body.content   is');
-    // console.log(req.body.content);
            console.log('req.isAuthenticated) ::'+ JSON.stringify(req.isAuthenticated));
            var names = [];
            console.log('req.user'+JSON.stringify(req.user));
@@ -274,24 +251,10 @@ function sendRequest(username_0, username_1){
    User.findOne({'username':username_1},function(err, result_user){
      console.log(JSON.stringify(result_user));
      result_user.awaitingFridendList.push({userName: username_0} );
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
-   console.log('++++++++++++++++++++++++++');
 
      console.log(JSON.stringify(result_user));
      result_user.save();
    });
-    //User.findOne({username:username_1 });
-    //var thisUser = User.load();
-    //console.log('thisUser    is'+ JSON.stringify(thisUser));
-    //thisUser.awaitingFridendList.push({userName: username_0});
-    //thisUser.save();
-       // 
-   // console.log('After saved thisUser   :');
-   // console.log(JSON.stringify(thisUser));
     return; 
 
 
