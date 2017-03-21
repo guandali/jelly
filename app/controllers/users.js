@@ -115,10 +115,6 @@ exports.acceptfriend = function(req, res){
         
                                     });
             result_user.save();
-            console.log('After push: ' +  JSON.stringify(result_user)); 
-            console.log('');
-            console.log('');
-            console.log('');
             console.log('BEFORE remove from pendingList: ' +  JSON.stringify(result_user.pendingFriendList));      
             //Now need to remove it from pending list 
             result_user.pendingFriendList.id(check_id).remove();
